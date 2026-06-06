@@ -72,7 +72,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 lg:flex lg:w-5/10  gap-4 ">
+                    <div className="grid grid-cols-2 md:flex lg:w-5/10 md:w-5/8  gap-4 ">
 
                         <div className="relative w-full ">
 
@@ -87,7 +87,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
                                         <div className={`w-3 h-3 rounded-full ${options.find(o => o.label === selectedState)?.color}`} />
                                     )}
 
-                                    <span className={"text-sm"}>
+                                    <span className={"text-sm md:text-lg"}>
                                         {selectedState || "Disponibilidad"}
                                     </span>
 
@@ -135,7 +135,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
                                 onClick={() => setOpenCourses(!openCourses)}
                                 className={` w-full flex items-center justify-between px-4 py-3 rounded-xl border-2 bg-[#D9D9D9] text-black font-medium transition-all duration-200 ${openCourses ? "border-blue-400 shadow-[0_0_12px_rgba(86,147,207,0.35)]" : "border-[#444444]"}`}>
 
-                                <span className="text-sm">
+                                <span className="text-sm md:text-lg">
                                     {selectedCourse || "Cursos"}
                                 </span>
 
@@ -183,7 +183,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
                                 onClick={() => setOpenTeachers(!openTeachers)}
                                 className={` w-full flex items-center justify-between px-4 py-3 rounded-xl border-2 bg-[#D9D9D9] text-black font-medium transition-all duration-200 ${openTeachers ? "border-blue-400 shadow-[0_0_12px_rgba(86,147,207,0.35)]" : "border-[#444444]"}`}>
 
-                                <span className="text-sm">
+                                <span className="text-sm md:text-lg">
                                     {selectedTeacher || "Docentes"}
                                 </span>
 
