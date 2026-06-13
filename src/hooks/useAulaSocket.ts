@@ -6,7 +6,7 @@ const useAulaSocket = () => {
     const [aulas, setAulas] = useState<Aula[]>([]);
 
     useEffect(() => {
-        const socket = io('https://organimap-backend.onrender.com', {
+        const socket = io('https://afora-backend.onrender.com', {
             transports: ['websocket'],
         });
 
