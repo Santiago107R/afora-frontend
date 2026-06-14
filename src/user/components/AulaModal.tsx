@@ -1,16 +1,16 @@
 import type { state } from "../types/aula.response";
-import type { DocenteAulaResponse } from "../types/docente_aula.response";
+import type { ClaseResponse } from "../types/clase.response";
 
 interface Props {
     name: string;
     description?: string;
     capacity: number;
     state: state;
-    docenteAula: DocenteAulaResponse[];
+    clase: ClaseResponse[];
     onClose?: () => void;
 }
 
-const AulaModal = ({ name, capacity, state, description, docenteAula = [], onClose }: Props) => {
+const AulaModal = ({ name, capacity, state, description, clase = [], onClose }: Props) => {
 
     const statusStyles = {
         available: { bg: "bg-green-300", text: "text-green-700" },
@@ -43,11 +43,11 @@ const AulaModal = ({ name, capacity, state, description, docenteAula = [], onClo
         }
     };
 
-    const claseActual = docenteAula.find(item => esHorarioActual(item.dia, item.horario));
+    const claseActual = clase.find(item => esHorarioActual(item.dia, item.horario));
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-            <div className="bg-[#E7E7E7] w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={onClose}>
+            <div className="bg-[#E7E7E7] w-full max-w-md rounded-2xl overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
                 <div className="bg-[#D9D9D9] px-6 py-4 flex justify-between items-start">
                     <h1 className="text-3xl font-bold font-anton leading-tight">
                         {name}

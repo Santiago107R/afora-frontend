@@ -1,3 +1,4 @@
+import { useModalStore } from "@/store/modalStore";
 import type { Aula, state } from "../types/aula.response";
 
 interface Props {
@@ -8,11 +9,10 @@ interface Props {
     profesor?: string;
     materia?: string;
 
-    handleModal?: ({ name }: Partial<Aula>) => void;
 }
 
-const AulaCard = ({ shadow, name, capacity, state, handleModal }: Props) => {
-
+const AulaCard = ({ shadow, name, capacity, state}: Props) => {
+    const { openModal } = useModalStore() 
 
     const statusColors = {
         available: "text-green-500",
@@ -23,7 +23,7 @@ const AulaCard = ({ shadow, name, capacity, state, handleModal }: Props) => {
     return (
         <>
             <div
-                onClick={() => handleModal && handleModal({ name })}
+                onClick={() => openModal({ name })}
                 className={` flex flex-col py-5 px-3 bg-[#D9D9D9] rounded-2xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-lg cursor-pointer transition hover:scale-105 border-[#D9D9D9] hover:border-[#3B78B3] border-2 ${shadow && 'shadow-[10px_10px_7px_rgba(0,0,0,0.25)]'} `}
             >
 

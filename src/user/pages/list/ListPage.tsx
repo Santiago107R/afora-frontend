@@ -1,82 +1,59 @@
 import AulaFilters from "@/user/components/AulaFilters";
 import AulaGrid from '../../components/AulaGrid';
 import useAulaSocket from '@/hooks/useAulaSocket';
-import type { Aula } from "@/user/types/aula.response";
 import AulaModal from "@/user/components/AulaModal";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
+import { useModalStore } from "@/store/modalStore";
+
+const STATE_MAP: Record<string, string> = {
+  "Disponible": "available",
+  "Ocupado": "busy",
+  "Mantenimiento": "maintenance"
+};
 
 const ListPage = () => {
-  const { aulas } = useAulaSocket();
+  const { aulas = [] } = useAulaSocket();
+  const { selectedAula, closeModal } = useModalStore();
 
-  const [selectedAulaName, setSelectedAulaName] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [selectedState, setSelectedState] = useState<string | null>(null);
+  const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
-  const [search, setSearch] = useState("")
+  const filteredAulas = useMemo(() => {
+  return aulas.filter((aula) => {
+    if (search && !aula.name.toLowerCase().includes(search.toLowerCase())) return false;
 
-  const [selectedState, setSelectedState] = useState<string | null>(null)
+    if (selectedState && selectedState !== 'Todos' && selectedState !== aula.state && STATE_MAP[selectedState] !== aula.state) return false;
 
-  const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null)
+    if (selectedTeacher && selectedTeacher !== "Todos" && !aula.clase?.some(d => d.user.name === selectedTeacher)) return false;
 
-  const [selectedCourse, setSelectedCourse] = useState<string | null>(null)
+    if (selectedCourse && selectedCourse !== "Todos" && !aula.clase?.some(d => d.curso.name === selectedCourse)) return false;
 
-  const currentAula = aulas?.find(aula => aula.name === selectedAulaName);
+    return true;
+  });
+  }, [aulas, search, selectedState, selectedTeacher, selectedCourse]);
 
-  const handleModal = ({ name }: Partial<Aula>) => {
-    setSelectedAulaName(name || null);
-  };
-  
 
-  const filteredAulas = aulas.filter((aula) => {
-
-    const matchesSearch =
-      aula.name.toLowerCase().includes(search.toLowerCase())
-
-    const matchesState =
-      !selectedState ||
-      selectedState === aula.state ||
-      (
-        selectedState === "Disponible" && aula.state === "available"
-      ) ||
-      (
-        selectedState === "Ocupado" && aula.state === "busy"
-      ) ||
-      (
-        selectedState === "Mantenimiento" && aula.state === "maintenance"
-      )
-
-    const matchesTeacher =
-      !selectedTeacher ||
-      selectedTeacher === "Todos" ||
-      aula.docenteAula?.some(
-        docente =>
-          docente.user.name === selectedTeacher
-      )
-
-    const matchesCourse =
-      !selectedCourse ||
-      selectedCourse === "Todos" ||
-      aula.docenteAula?.some(
-        docente =>
-          docente.curso.name === selectedCourse
-      )
-
-    return (
-      matchesSearch &&
-      matchesState &&
-      matchesTeacher &&
-      matchesCourse
-    )
-    
-  })
-  
+  const currentAula = useMemo(() => {
+    if (!selectedAula) return null;
+    return aulas.find(aula => aula.name === selectedAula.name);
+  }, [aulas, selectedAula]);
 
   return (
-    <div className="p-10 flex flex-col gap-6 ">
+    <div className="p-10 flex flex-col gap-6">
       <div>
-        <AulaFilters icon={Search} placeholder="Buscar aula..." aulas={aulas} search={search} setSearch={setSearch} selectedState={selectedState} setSelectedState={setSelectedState} selectedTeacher={selectedTeacher} setSelectedTeacher={setSelectedTeacher} selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} />
+        <AulaFilters 
+          icon={Search} placeholder="Buscar aula..." aulas={aulas} 
+          search={search} setSearch={setSearch} 
+          selectedState={selectedState} setSelectedState={setSelectedState} 
+          selectedTeacher={selectedTeacher} setSelectedTeacher={setSelectedTeacher} 
+          selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} 
+        />
       </div>
 
-      <AulaGrid aulas={filteredAulas} handleModal={handleModal}/>
+      <AulaGrid aulas={filteredAulas} />
 
       {currentAula && (
         <AulaModal
@@ -84,8 +61,8 @@ const ListPage = () => {
           description={currentAula.description}
           capacity={currentAula.capacity}
           state={currentAula.state}
-          docenteAula={currentAula.docenteAula}
-          onClose={() => setSelectedAulaName(null)}
+          clase={currentAula.clase}
+          onClose={closeModal}
         />
       )}
     </div>

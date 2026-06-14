@@ -3,11 +3,9 @@ import AulaCard from "./AulaCard";
 
 interface Props {
     aulas: Aula[];
-
-    handleModal?: ({ name }: Partial<Aula>) => void;
 }
 
-const AulaGrid = ({ aulas, handleModal }: Props) => {
+const AulaGrid = ({ aulas }: Props) => {
 
     if (!aulas || aulas.length == 0) {
         return (
@@ -21,7 +19,7 @@ const AulaGrid = ({ aulas, handleModal }: Props) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15">
 
             {aulas.map((aula) => (
-                <AulaCard key={aula.name} name={aula.name} capacity={aula.capacity} state={aula.state} shadow handleModal={handleModal}/>
+                <AulaCard key={aula.name} name={aula.name} capacity={aula.capacity} state={aula.state} shadow />
             ))}
 
         </div>

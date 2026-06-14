@@ -35,6 +35,9 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
 
     const options = [
         {
+            label: "Todos",
+            color: "bg-indigo-500"
+        },{
             label: "Mantenimiento",
             color: "bg-gray-500"
         },
@@ -48,9 +51,9 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
         }
     ]
 
-    const teachers = [ ...new Set( aulas.flatMap(aula => aula.docenteAula?.map(d => d.user.name) || [] ) ) ]
+    const teachers = [ ...new Set( aulas.flatMap(aula => aula.clase?.map(c => c.user.name) || [] ) ) ]
 
-    const courses = [ ...new Set( aulas.flatMap(aula => aula.docenteAula?.map(d => d.curso.name) || [] ) ) ]
+    const courses = [ ...new Set( aulas.flatMap(aula => aula.clase?.map(c => c.curso.name) || [] ) ) ]
 
     return (
         <div>
