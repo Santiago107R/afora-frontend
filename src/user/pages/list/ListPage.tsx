@@ -1,10 +1,10 @@
 import AulaFilters from "@/user/components/AulaFilters";
-import AulaGrid from '../../components/AulaGrid';
 import useAulaSocket from '@/hooks/useAulaSocket';
 import AulaModal from "@/user/components/AulaModal";
 import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
 import { useModalStore } from "@/store/modalStore";
+import AulaGrid from "@/user/components/AulaGrid";
 
 const STATE_MAP: Record<string, string> = {
   "Disponible": "available",

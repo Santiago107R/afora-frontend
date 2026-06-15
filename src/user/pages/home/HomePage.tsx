@@ -1,5 +1,5 @@
+import ScheduleTable from "@/user/components/ScheduleTable"
 import SectionCard from "@/user/components/SectionCard"
-import ScheduleTable from '../../components/ScheduleTable';
 
 const HomePage = () => {
     return (

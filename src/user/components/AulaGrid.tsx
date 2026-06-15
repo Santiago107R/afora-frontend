@@ -19,7 +19,7 @@ const AulaGrid = ({ aulas }: Props) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15">
 
             {aulas.map((aula) => (
-                <AulaCard key={aula.name} name={aula.name} capacity={aula.capacity} state={aula.state} shadow />
+                <AulaCard key={aula.name} name={aula.name} capacity={aula.capacity} state={aula.state} clase={aula.clase} shadow />
             ))}
 
         </div>

@@ -3,7 +3,7 @@
   <br />
   <br />
   <p align="center">
-    <h2>OrganiMap</h2>
+    <h2>Afora</h2>
   </p>
 </div>
 

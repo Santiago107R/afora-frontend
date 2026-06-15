@@ -18,15 +18,17 @@ const AulaModal = ({ name, capacity, state, description, clase = [], onClose }: 
         maintenance: { bg: "bg-gray-300", text: "text-gray-700" }
     };
 
-        const esHorarioActual = (diaClase: string, rangoHorario: string): boolean => {
+    const esHorarioActual = (diaClase: string, rangoHorario: string): boolean => {
+        if (!diaClase || !rangoHorario) return false;
+
         const diasSemana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado"];
         const ahora = new Date();
-        
+
         const diaActual = diasSemana[ahora.getDay()];
         if (diaActual.toLowerCase() !== diaClase.toLowerCase()) return false;
 
         try {
-            const [inicio, fin] = rangoHorario.split("-"); 
+            const [inicio, fin] = rangoHorario.split("-");
             const [horaInicio, minInicio] = inicio.split(":").map(Number);
             const [horaFin, minFin] = fin.split(":").map(Number);
 
@@ -39,11 +41,11 @@ const AulaModal = ({ name, capacity, state, description, clase = [], onClose }: 
 
             return minutosActual >= minutosInicio && minutosActual <= minutosFin;
         } catch (error) {
-            return false; 
+            return false;
         }
     };
 
-    const claseActual = clase.find(item => esHorarioActual(item.dia, item.horario));
+    const claseActual = clase.find(item => esHorarioActual(item.day, item.schedule));
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={onClose}>
@@ -65,7 +67,7 @@ const AulaModal = ({ name, capacity, state, description, clase = [], onClose }: 
                     </div>
 
                     <div className="flex flex-col gap-5 text-2xl max-h-80 overflow-y-auto pr-1">
-                        
+
                         {!claseActual ? (
                             <p className="text-gray-500 text-xl italic my-2">Sin clase en este momento</p>
                         ) : (
@@ -84,7 +86,7 @@ const AulaModal = ({ name, capacity, state, description, clase = [], onClose }: 
                                 </p>
                                 <p>
                                     <span className="font-bold">Horario:&nbsp;</span>
-                                    <span className="text-gray-700">{claseActual.dia} de {claseActual.horario}</span>
+                                    <span className="text-gray-700">{claseActual.day} de {claseActual.schedule}</span>
                                 </p>
                             </div>
                         )}

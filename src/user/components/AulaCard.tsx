@@ -1,17 +1,16 @@
 import { useModalStore } from "@/store/modalStore";
-import type { Aula, state } from "../types/aula.response";
+import type { state } from "../types/aula.response";
 
 interface Props {
     shadow?: boolean;
     name: string;
     capacity: number;
     state: state;
-    profesor?: string;
-    materia?: string;
+    clase: any[]
 
 }
 
-const AulaCard = ({ shadow, name, capacity, state}: Props) => {
+const AulaCard = ({ shadow, name, capacity, state, clase}: Props) => {
     const { openModal } = useModalStore() 
 
     const statusColors = {
