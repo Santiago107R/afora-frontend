@@ -35,7 +35,6 @@ export interface Materia {
 export interface User {
     id: string;
     name: string;
-    DNI: number;
     roles: string[];
     isActive: boolean;
 }

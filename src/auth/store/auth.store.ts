@@ -1,0 +1,51 @@
+import type { User } from "@/user/types/clase.response";
+import { create } from "zustand";
+import { loginAction } from "../actions/login.action";
+
+type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking'
+
+type AuthState = {
+    user: User | null
+    token: string | null
+    authStatus: AuthStatus
+
+    isAdmin: () => boolean
+
+    login: (username: string, password: string) => Promise<boolean>
+    logout: () => void
+    checkAuthStatus: () => Promise<boolean>
+}
+
+const useAuthStore = create<AuthState>()((set, get) => ({
+    user: null,
+    token: null,
+    authStatus: 'checking',
+
+    isAdmin: () => {
+        const roles = get().user?.roles || []
+        return roles.includes('admin')
+    },
+
+    login: async (username: string, password: string) => {
+        try {
+            const data = await loginAction(username, password)
+
+            set({ user: data.user, authStatus: 'authenticated' })
+
+            return true
+        } catch (error) {
+            set({ user: null, authStatus: 'not-authenticated' })
+            return false
+        }
+    },
+
+    logout: () => {
+        set({ user: null, authStatus: 'not-authenticated' })
+    },
+
+    checkAuthStatus: async () => {
+        try {
+            const
+        }
+    }
+}))
