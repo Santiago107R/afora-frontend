@@ -6,7 +6,7 @@ const useAulaSocket = () => {
     const [aulas, setAulas] = useState<Aula[]>([]);
 
     useEffect(() => {
-        const socket = io(import.meta.env.VITE_API_URL, {
+        const socket = io(import.meta.env.VITE_API_SOCKET_URL, {
             transports: ['websocket'],
         });
 

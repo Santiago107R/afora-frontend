@@ -1,0 +1,22 @@
+:root {
+  --color-primary: #16c6cc;
+  --color-primary-hover: #13adb3;
+  --color-secondary: #7CE0E4;
+  --color-thirty: #58C3DB;
+
+  --color-black-primary: #000000;
+  --color-black-secondary: #111111;
+  --color-black-thirty: #111111;
+
+  --color-white-primary: #FFFFFF;
+
+  --color-green-primary: #15FF00;
+
+  --color-red-primary: #FF0000;
+  
+  --color-background: #f8fafc;
+}
+
+.dark {
+  --color-background: #0f172a;
+}

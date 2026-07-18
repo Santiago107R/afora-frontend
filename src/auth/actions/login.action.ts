@@ -5,7 +5,7 @@ export const loginAction = async (
     username: string,
     password: string
 ): Promise<AuthResponse> => {
-    const aforaAPi = new apiClient('https://afora-backend.onrender.com/api')
+    const aforaAPi = new apiClient(import.meta.env.VITE_API_URL)
     try {
         const resultado = await aforaAPi.post<AuthResponse>('/auth/login', {
             username,

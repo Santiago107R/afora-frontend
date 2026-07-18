@@ -28,9 +28,21 @@ export class apiClient {
         return resultado
     }
 
-    public async get<T>(url: string, params: string[][], headers: object = {}): Promise<T> {
-        const query = new URLSearchParams(params)
-        url += query
+    public async get<T>(url: string, params: Record<string, string | number | boolean> = {}, headers: object = {}): Promise<T> {
+
+        const stringParams: Record<string, string> = {}
+        Object.entries(params).forEach(([key, value]) => {
+            if (value !== undefined && value !== null) {
+                stringParams[key] = String(value)
+            }
+        })
+
+        const query = new URLSearchParams(stringParams)
+        const queryString = query.toString()
+
+        if (queryString) {
+            url += (url.includes('?') ? '&' : '?') + queryString
+        }
 
         const respuesta = await fetch(this.baseUrl + url, {
             method: 'GET',

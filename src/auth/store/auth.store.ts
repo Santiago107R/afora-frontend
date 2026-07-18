@@ -1,6 +1,7 @@
 import type { User } from "@/user/types/clase.response";
 import { create } from "zustand";
 import { loginAction } from "../actions/login.action";
+import { checkAuthAction } from "../actions/check-auth.action";
 
 type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking'
 
@@ -19,7 +20,7 @@ type AuthState = {
 const useAuthStore = create<AuthState>()((set, get) => ({
     user: null,
     token: null,
-    authStatus: 'checking',
+    authStatus: "checking",
 
     isAdmin: () => {
         const roles = get().user?.roles || []
@@ -45,7 +46,20 @@ const useAuthStore = create<AuthState>()((set, get) => ({
 
     checkAuthStatus: async () => {
         try {
-            const
+            const { user } = await checkAuthAction()
+            set({
+                user: user,
+                authStatus: 'authenticated',
+            })
+
+            return true
+        } catch (error) {
+            set({
+                user: undefined,
+                authStatus: 'not-authenticated',
+            })
+
+            return false
         }
     }
 }))
