@@ -91,6 +91,12 @@ export const useAuthStore = create<AuthState>()(
 
                 return merged
             },
+            onRehydrateStorage: () => (state) => {
+                if (state?.authStatus === 'authenticated' && state?.user) {
+                    state.authStatus = 'checking'
+                    state.user = null
+                }
+            },
         }
     )
 )
