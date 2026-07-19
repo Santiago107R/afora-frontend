@@ -9,9 +9,10 @@ import RegisterPage from "./auth/pages/register/RegisterPage";
 import { AdminRoute, AuthenticatedRoute, NotAuthenticatedRoute } from "./components/routes/ProtectedRoutes";
 import AuthLayout from "./auth/layouts/AuthLayout";
 import { RootRedirect } from "./components/routes/RootRedirect";
+import HomeAdminPage from "./admin/pages/home/HomeAdminPage";
 
 const UserLayout = lazy(() => import('./user/layouts/UserLayout'));
-// const AdminLayout = lazy(() => import('./admin/layouts/AdminLayout')); // Cuando lo tengas
+const AdminLayout = lazy(() => import('./admin/layouts/AdminLayout'));
 
 export const AppRouter = createHashRouter([
     {
@@ -42,13 +43,13 @@ export const AppRouter = createHashRouter([
         path: '/admin',
         element: (
             <AdminRoute>
-                <div>Próximamente: Admin Layout</div>
+                <AdminLayout />
             </AdminRoute>
         ),
         children: [
             {
                 index: true,
-                element: <div>Dashboard de Admin</div>,
+                element: <HomeAdminPage />,
             },
         ],
     },

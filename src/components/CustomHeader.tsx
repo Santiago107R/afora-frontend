@@ -1,15 +1,18 @@
 import type { LinkProp } from "@/user/types/links"
+import type { ButtonProps } from "@base-ui/react"
 import type { LucideIcon } from "lucide-react"
 import { Link } from "react-router"
+import { Button } from "./ui/button"
 
 interface Props {
   title: string
   link: LinkProp[]
   icon: LucideIcon
   logo: string
+  button?: ButtonProps | undefined
 }
 
-const CustomHeader = ({ title, link, icon: Icon, logo }: Props) => {
+const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Props) => {
   return (
     <>
       <div className="bg-[#1A2B3C] text-white flex items-center justify-between  py-[clamp(1vw,3vw,1rem)]">
@@ -28,6 +31,12 @@ const CustomHeader = ({ title, link, icon: Icon, logo }: Props) => {
             <p className="font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-27px">{item.name} </p>
           </Link>
         ))}
+
+        {
+          button && (
+            <Button {...button} />
+          )
+        }
       </nav>
     </>
   )
