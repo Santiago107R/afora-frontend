@@ -10,7 +10,7 @@ interface Props {
 
 }
 
-const AulaCard = ({ shadow, name, capacity, state, clase }: Props) => {
+const AulaCard = ({ shadow, name, capacity, state }: Props) => {
     const { setSelectedAula: openModal } = useSelectedAulaStore()
 
     const statusColors = {

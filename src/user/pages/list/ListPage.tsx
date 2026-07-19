@@ -14,7 +14,7 @@ const STATE_MAP: Record<string, string> = {
 
 const ListPage = () => {
   const { aulas = [] } = useAulaSocket();
-  const { selectedAula, clearSelectedAula: closeModal } = useSelectedAulaStore();
+  const { selectedAula, clearSelectedAula } = useSelectedAulaStore();
 
   const [search, setSearch] = useState("");
   const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -62,7 +62,7 @@ const ListPage = () => {
           capacity={currentAula.capacity}
           state={currentAula.state}
           clase={currentAula.clase}
-          onClose={closeModal}
+          onClose={clearSelectedAula}
         />
       )}
     </div>
