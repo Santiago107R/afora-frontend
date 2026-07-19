@@ -18,23 +18,28 @@ type AuthState = {
     checkAuthStatus: () => Promise<boolean>
 }
 
+const AUTH_STORAGE_KEY = 'afora-auth'
+
+const normalizeRoles = (roles?: string[] | null) => (roles ?? []).map((role) => role?.toLowerCase?.() ?? role)
+const isAdminRole = (roles?: string[] | null) => normalizeRoles(roles).includes('admin')
+
 export const useAuthStore = create<AuthState>()(
     persist(
         (set, get) => ({
             user: null,
             token: null,
-            authStatus: "checking",
+            authStatus: 'checking',
 
             isAdmin: () => {
-                const roles = get().user?.roles || []
-                return roles.includes('admin')
+                if (get().authStatus !== 'authenticated') return false
+                return isAdminRole(get().user?.roles)
             },
 
             login: async (name: string, password: string) => {
                 try {
                     const data = await loginAction(name, password)
 
-                    set({ user: data.user, authStatus: 'authenticated' })
+                    set({ user: data.user ?? null, authStatus: 'authenticated' })
 
                     return true
                 } catch (error) {
@@ -44,14 +49,14 @@ export const useAuthStore = create<AuthState>()(
             },
 
             logout: () => {
-                set({ user: null, authStatus: 'not-authenticated' })
+                set({ user: null, token: null, authStatus: 'not-authenticated' })
             },
 
             checkAuthStatus: async () => {
                 try {
                     const { user } = await checkAuthAction()
                     set({
-                        user: user,
+                        user: user ?? null,
                         authStatus: 'authenticated',
                     })
                     return true
@@ -60,17 +65,29 @@ export const useAuthStore = create<AuthState>()(
                         user: null,
                         authStatus: 'not-authenticated',
                     })
-                    throw error
+                    return false
                 }
             }
         }),
         {
-            name: 'afora-auth',
+            name: AUTH_STORAGE_KEY,
             storage: createJSONStorage(() => sessionStorage),
             partialize: (state) => ({
                 user: state.user,
                 authStatus: state.authStatus,
             }),
+            merge: (persistedState, currentState) => {
+                const merged = {
+                    ...currentState,
+                    ...(persistedState as Partial<AuthState>),
+                } as AuthState
+
+                if (merged.authStatus !== 'authenticated') {
+                    merged.user = null
+                }
+
+                return merged
+            },
         }
     )
 )
