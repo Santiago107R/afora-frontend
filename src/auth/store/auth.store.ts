@@ -1,5 +1,6 @@
 import type { User } from "@/user/types/clase.response";
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { loginAction } from "../actions/login.action";
 import { checkAuthAction } from "../actions/check-auth.action";
 
@@ -17,49 +18,61 @@ type AuthState = {
     checkAuthStatus: () => Promise<boolean>
 }
 
-export const useAuthStore = create<AuthState>()((set, get) => ({
-    user: null,
-    token: null,
-    authStatus: "checking",
+export const useAuthStore = create<AuthState>()(
+    persist(
+        (set, get) => ({
+            user: null,
+            token: null,
+            authStatus: "checking",
 
-    isAdmin: () => {
-        const roles = get().user?.roles || []
-        return roles.includes('admin')
-    },
+            isAdmin: () => {
+                const roles = get().user?.roles || []
+                return roles.includes('admin')
+            },
 
-    login: async (name: string, password: string) => {
-        try {
-            const data = await loginAction(name, password)
+            login: async (name: string, password: string) => {
+                try {
+                    const data = await loginAction(name, password)
 
-            set({ user: data.user, authStatus: 'authenticated' })
+                    set({ user: data.user, authStatus: 'authenticated' })
 
-            return true
-        } catch (error) {
-            set({ user: null, authStatus: 'not-authenticated' })
-            return false
+                    return true
+                } catch (error) {
+                    set({ user: null, authStatus: 'not-authenticated' })
+                    return false
+                }
+            },
+
+            logout: () => {
+                set({ user: null, authStatus: 'not-authenticated' })
+            },
+
+            checkAuthStatus: async () => {
+                try {
+                    const { user } = await checkAuthAction()
+                    set({
+                        user: user,
+                        authStatus: 'authenticated',
+                    })
+
+                    return true
+                } catch (error) {
+                    set({
+                        user: null,
+                        authStatus: 'not-authenticated',
+                    })
+
+                    return false
+                }
+            }
+        }),
+        {
+            name: 'afora-auth',
+            storage: createJSONStorage(() => sessionStorage),
+            partialize: (state) => ({
+                user: state.user,
+                authStatus: state.authStatus,
+            }),
         }
-    },
-
-    logout: () => {
-        set({ user: null, authStatus: 'not-authenticated' })
-    },
-
-    checkAuthStatus: async () => {
-        try {
-            const { user } = await checkAuthAction()
-            set({
-                user: user,
-                authStatus: 'authenticated',
-            })
-
-            return true
-        } catch (error) {
-            set({
-                user: undefined,
-                authStatus: 'not-authenticated',
-            })
-
-            return false
-        }
-    }
-}))
+    )
+)
