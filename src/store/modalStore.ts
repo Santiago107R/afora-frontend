@@ -1,14 +1,14 @@
-import type { Aula } from '@/user/types/clase.response'
+import type { Aula } from '@/user/types/aula.response'
 import { create } from 'zustand'
 
 type Store = {
   selectedAula: Partial<Aula> | null
-  openModal: (aula: Partial<Aula>) => void
-  closeModal: () => void
+  setSelectedAula: (aula: Partial<Aula>) => void
+  clearSelectedAula: () => void
 }
 
 export const useModalStore = create<Store>()((set) => ({
   selectedAula: null,
-  openModal: (aula) => set({ selectedAula: aula }),
-  closeModal: () => set({ selectedAula: null }),
+  setSelectedAula: (aula) => set({ selectedAula: aula }),
+  clearSelectedAula: () => set({ selectedAula: null }),
 }))

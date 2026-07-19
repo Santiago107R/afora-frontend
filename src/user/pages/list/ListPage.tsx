@@ -14,7 +14,7 @@ const STATE_MAP: Record<string, string> = {
 
 const ListPage = () => {
   const { aulas = [] } = useAulaSocket();
-  const { selectedAula, closeModal } = useModalStore();
+  const { selectedAula, clearSelectedAula: closeModal } = useModalStore();
 
   const [search, setSearch] = useState("");
   const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -22,17 +22,17 @@ const ListPage = () => {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
   const filteredAulas = useMemo(() => {
-  return aulas.filter((aula) => {
-    if (search && !aula.name.toLowerCase().includes(search.toLowerCase())) return false;
+    return aulas.filter((aula) => {
+      if (search && !aula.name.toLowerCase().includes(search.toLowerCase())) return false;
 
-    if (selectedState && selectedState !== 'Todos' && selectedState !== aula.state && STATE_MAP[selectedState] !== aula.state) return false;
+      if (selectedState && selectedState !== 'Todos' && selectedState !== aula.state && STATE_MAP[selectedState] !== aula.state) return false;
 
-    if (selectedTeacher && selectedTeacher !== "Todos" && !aula.clase?.some(d => d.user.name === selectedTeacher)) return false;
+      if (selectedTeacher && selectedTeacher !== "Todos" && !aula.clase?.some(d => d.user.name === selectedTeacher)) return false;
 
-    if (selectedCourse && selectedCourse !== "Todos" && !aula.clase?.some(d => d.curso.name === selectedCourse)) return false;
+      if (selectedCourse && selectedCourse !== "Todos" && !aula.clase?.some(d => d.curso.name === selectedCourse)) return false;
 
-    return true;
-  });
+      return true;
+    });
   }, [aulas, search, selectedState, selectedTeacher, selectedCourse]);
 
 
@@ -44,12 +44,12 @@ const ListPage = () => {
   return (
     <div className="p-10 flex flex-col gap-6">
       <div>
-        <AulaFilters 
-          icon={Search} placeholder="Buscar aula..." aulas={aulas} 
-          search={search} setSearch={setSearch} 
-          selectedState={selectedState} setSelectedState={setSelectedState} 
-          selectedTeacher={selectedTeacher} setSelectedTeacher={setSelectedTeacher} 
-          selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} 
+        <AulaFilters
+          icon={Search} placeholder="Buscar aula..." aulas={aulas}
+          search={search} setSearch={setSearch}
+          selectedState={selectedState} setSelectedState={setSelectedState}
+          selectedTeacher={selectedTeacher} setSelectedTeacher={setSelectedTeacher}
+          selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse}
         />
       </div>
 

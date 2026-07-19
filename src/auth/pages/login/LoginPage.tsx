@@ -1,16 +1,37 @@
+import { useAuthStore } from "@/auth/store/auth.store";
 import { Button } from "@/components/ui/button";
 import { UserCircle, Eye, EyeClosed } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router";
+import { toast } from "sonner";
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(true)
+    const [isPosting, setIsPosting] = useState(false)
+    const navigate = useNavigate()
+    const { login } = useAuthStore()
 
     const togglePasswordVisibility = () => {
         setShowPassword(prev => !prev)
     }
 
-    const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setIsPosting(true)
 
+        const formData = new FormData(event.target as HTMLFormElement)
+        const username = formData.get('username') as string
+        const password = formData.get('password') as string
+
+        const isValid = await login(username, password)
+
+        if (isValid) {
+            navigate('/')
+            return
+        }
+
+        toast.error('Nombre o/y Contraseña no validos')
+        setIsPosting(false)
     }
 
     return (
@@ -27,7 +48,7 @@ const LoginPage = () => {
                     <p className="flex flex-col text-xl">Una app pensada para optimizar tu <span>día a día y acompañarte en cada jornada.</span></p>
 
                     <img
-                        src="/logo.png"
+                        src="/logo_negro.png"
                         alt="Logo de Afora"
                         className="h-100"
                     />
@@ -39,7 +60,7 @@ const LoginPage = () => {
                     </div>
 
                     <form onSubmit={handleLogin} className="flex flex-col justify-center items-start gap-4 ">
-                        <label htmlFor="name" className="text-xl">Ingrese su nombre:</label>
+                        <label htmlFor="username" className="text-xl">Ingrese su nombre:</label>
                         <div className="flex flex-row items-center gap-3 border border-gray-300 rounded-xl px-4 bg-white focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all shadow-sm">
                             <div className="text-gray-400 shrink-0">
                                 <UserCircle className="w-6 h-6" />
@@ -50,7 +71,7 @@ const LoginPage = () => {
                             <input
                                 type="text"
                                 className="w-full text-gray-800 placeholder-gray-400 py-3 bg-transparent focus:outline-none text-lg"
-                                name="name"
+                                name="username"
                                 placeholder="ej: Juan"
                             />
                         </div>
@@ -77,7 +98,11 @@ const LoginPage = () => {
                             />
                         </div>
 
-                        <Button className={"bg-(--color-primary) hover:bg-(--color-primary-hover) self-center text-black text-xl px-18 py-5 mt-5 font-montserrat"}>Ingresar</Button>
+                        <Button
+                            type="submit"
+                            disabled={isPosting}
+                            className={"bg-(--color-primary) hover:bg-(--color-primary-hover) self-center text-black text-xl px-18 py-5 mt-5 font-montserrat"}
+                        >Ingresar</Button>
                     </form>
                 </div>
             </div>

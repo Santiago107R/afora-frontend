@@ -17,7 +17,7 @@ type AuthState = {
     checkAuthStatus: () => Promise<boolean>
 }
 
-const useAuthStore = create<AuthState>()((set, get) => ({
+export const useAuthStore = create<AuthState>()((set, get) => ({
     user: null,
     token: null,
     authStatus: "checking",

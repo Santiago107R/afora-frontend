@@ -10,8 +10,8 @@ interface Props {
 
 }
 
-const AulaCard = ({ shadow, name, capacity, state, clase}: Props) => {
-    const { openModal } = useModalStore() 
+const AulaCard = ({ shadow, name, capacity, state, clase }: Props) => {
+    const { setSelectedAula: openModal } = useModalStore()
 
     const statusColors = {
         available: "text-green-500",
