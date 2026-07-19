@@ -13,16 +13,26 @@ import { CustomFullScreenLoading } from './components/CustomFullScreenLoading';
 const queryCLient = new QueryClient()
 
 const CheckAuthProvider = ({ children }: PropsWithChildren) => {
-    const { checkAuthStatus } = useAuthStore()
+    const { checkAuthStatus, authStatus } = useAuthStore()
 
-    const { isLoading } = useQuery({
+    useQuery({
         queryKey: ['auth'],
         queryFn: checkAuthStatus,
         refetchInterval: 1000 * 60 * 1.5,
         refetchOnWindowFocus: true,
+        retry: false,
     })
+    // const { isLoading } = useQuery({
+    //     queryKey: ['auth'],
+    //     queryFn: checkAuthStatus,
+    //     refetchInterval: 1000 * 60 * 1.5,
+    //     refetchOnWindowFocus: true,
+    // })
 
-    if (isLoading) return <CustomFullScreenLoading />
+    // if (isLoading) return <CustomFullScreenLoading />
+    if (authStatus === 'checking') {
+        return <CustomFullScreenLoading />
+    }
 
     return children
 }

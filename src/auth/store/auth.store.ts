@@ -54,15 +54,13 @@ export const useAuthStore = create<AuthState>()(
                         user: user,
                         authStatus: 'authenticated',
                     })
-
                     return true
                 } catch (error) {
                     set({
                         user: null,
                         authStatus: 'not-authenticated',
                     })
-
-                    return false
+                    throw error
                 }
             }
         }),
@@ -71,7 +69,6 @@ export const useAuthStore = create<AuthState>()(
             storage: createJSONStorage(() => sessionStorage),
             partialize: (state) => ({
                 user: state.user,
-                authStatus: state.authStatus,
             }),
         }
     )
