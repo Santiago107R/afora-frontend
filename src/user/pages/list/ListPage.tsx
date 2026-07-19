@@ -3,7 +3,7 @@ import useAulaSocket from '@/hooks/useAulaSocket';
 import AulaModal from "@/user/components/AulaModal";
 import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
-import { useModalStore } from "@/store/modalStore";
+import { useSelectedAulaStore } from "@/store/selectedAulaStore";
 import AulaGrid from "@/user/components/AulaGrid";
 
 const STATE_MAP: Record<string, string> = {
@@ -14,7 +14,7 @@ const STATE_MAP: Record<string, string> = {
 
 const ListPage = () => {
   const { aulas = [] } = useAulaSocket();
-  const { selectedAula, clearSelectedAula: closeModal } = useModalStore();
+  const { selectedAula, clearSelectedAula: closeModal } = useSelectedAulaStore();
 
   const [search, setSearch] = useState("");
   const [selectedState, setSelectedState] = useState<string | null>(null);

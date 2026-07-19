@@ -7,7 +7,7 @@ type Store = {
   clearSelectedAula: () => void
 }
 
-export const useModalStore = create<Store>()((set) => ({
+export const useSelectedAulaStore = create<Store>()((set) => ({
   selectedAula: null,
   setSelectedAula: (aula) => set({ selectedAula: aula }),
   clearSelectedAula: () => set({ selectedAula: null }),

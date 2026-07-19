@@ -1,4 +1,4 @@
-import { useModalStore } from "@/store/modalStore";
+import { useSelectedAulaStore } from "@/store/selectedAulaStore";
 import type { state } from "../types/aula.response";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AulaCard = ({ shadow, name, capacity, state, clase }: Props) => {
-    const { setSelectedAula: openModal } = useModalStore()
+    const { setSelectedAula: openModal } = useSelectedAulaStore()
 
     const statusColors = {
         available: "text-green-500",
