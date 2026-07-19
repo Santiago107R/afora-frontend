@@ -12,7 +12,7 @@ type AuthState = {
 
     isAdmin: () => boolean
 
-    login: (username: string, password: string) => Promise<boolean>
+    login: (name: string, password: string) => Promise<boolean>
     logout: () => void
     checkAuthStatus: () => Promise<boolean>
 }
@@ -27,9 +27,9 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         return roles.includes('admin')
     },
 
-    login: async (username: string, password: string) => {
+    login: async (name: string, password: string) => {
         try {
-            const data = await loginAction(username, password)
+            const data = await loginAction(name, password)
 
             set({ user: data.user, authStatus: 'authenticated' })
 

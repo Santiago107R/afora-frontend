@@ -20,10 +20,10 @@ const LoginPage = () => {
         setIsPosting(true)
 
         const formData = new FormData(event.target as HTMLFormElement)
-        const username = formData.get('username') as string
+        const name = formData.get('name') as string
         const password = formData.get('password') as string
 
-        const isValid = await login(username, password)
+        const isValid = await login(name, password)
 
         if (isValid) {
             navigate('/')
@@ -60,7 +60,7 @@ const LoginPage = () => {
                     </div>
 
                     <form onSubmit={handleLogin} className="flex flex-col justify-center items-start gap-4 ">
-                        <label htmlFor="username" className="text-xl">Ingrese su nombre:</label>
+                        <label htmlFor="name" className="text-xl">Ingrese su nombre:</label>
                         <div className="flex flex-row items-center gap-3 border border-gray-300 rounded-xl px-4 bg-white focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all shadow-sm">
                             <div className="text-gray-400 shrink-0">
                                 <UserCircle className="w-6 h-6" />
@@ -71,7 +71,7 @@ const LoginPage = () => {
                             <input
                                 type="text"
                                 className="w-full text-gray-800 placeholder-gray-400 py-3 bg-transparent focus:outline-none text-lg"
-                                name="username"
+                                name="name"
                                 placeholder="ej: Juan"
                             />
                         </div>
