@@ -50,16 +50,26 @@ export const useAuthStore = create<AuthState>()(
             },
 
             logout: async () => {
-                await logoutAction()
-
-                set({ user: null, token: null, authStatus: 'not-authenticated' })
+                try {
+                    await logoutAction()
+                } catch (error) {
+                    console.error("Error en el backend al hacer logout:", error)
+                } finally {
+                    set({ user: null, token: null, authStatus: 'not-authenticated' })
+                }
             },
 
             checkAuthStatus: async () => {
                 try {
                     const { user } = await checkAuthAction()
+
+                    if (!user) {
+                        set({ user: null, authStatus: 'not-authenticated' })
+                        return false
+                    }
+
                     set({
-                        user: user ?? null,
+                        user: user,
                         authStatus: 'authenticated',
                     })
                     return true
@@ -90,12 +100,6 @@ export const useAuthStore = create<AuthState>()(
                 }
 
                 return merged
-            },
-            onRehydrateStorage: () => (state) => {
-                if (state?.authStatus === 'authenticated' && state?.user) {
-                    state.authStatus = 'checking'
-                    state.user = null
-                }
             },
         }
     )
