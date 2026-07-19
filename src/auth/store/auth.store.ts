@@ -3,6 +3,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { loginAction } from "../actions/login.action";
 import { checkAuthAction } from "../actions/check-auth.action";
+import { logoutAction } from "../actions/logout.action";
 
 type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking'
 
@@ -48,7 +49,11 @@ export const useAuthStore = create<AuthState>()(
                 }
             },
 
-            logout: () => {
+            logout: async () => {
+                const data = await logoutAction()
+
+                if (!data) return null
+
                 set({ user: null, token: null, authStatus: 'not-authenticated' })
             },
 
