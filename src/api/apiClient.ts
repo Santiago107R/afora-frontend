@@ -17,7 +17,8 @@ export class apiClient {
                 ...this.defaultHeaders,
                 ...headers
             },
-            body: JSON.stringify(params)
+            body: JSON.stringify(params),
+            credentials: 'include',
         });
 
         if (!respuesta.ok) {
@@ -50,6 +51,7 @@ export class apiClient {
                 ...this.defaultHeaders,
                 ...headers,
             },
+            credentials: 'include',
         })
 
         if (!respuesta.ok) {
