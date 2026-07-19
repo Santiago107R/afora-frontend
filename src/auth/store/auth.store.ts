@@ -50,9 +50,7 @@ export const useAuthStore = create<AuthState>()(
             },
 
             logout: async () => {
-                const data = await logoutAction()
-
-                if (!data) return null
+                await logoutAction()
 
                 set({ user: null, token: null, authStatus: 'not-authenticated' })
             },
