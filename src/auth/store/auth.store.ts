@@ -1,6 +1,6 @@
 import type { User } from "@/user/types/clase.response";
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import { loginAction } from "../actions/login.action";
 import { checkAuthAction } from "../actions/check-auth.action";
 import { logoutAction } from "../actions/logout.action";
@@ -18,8 +18,6 @@ type AuthState = {
     logout: () => void
     checkAuthStatus: () => Promise<boolean>
 }
-
-const AUTH_STORAGE_KEY = 'afora-auth'
 
 const normalizeRoles = (roles?: string[] | null) => (roles ?? []).map((role) => role?.toLowerCase?.() ?? role)
 const isAdminRole = (roles?: string[] | null) => normalizeRoles(roles).includes('admin')
@@ -41,6 +39,7 @@ export const useAuthStore = create<AuthState>()(
                     const data = await loginAction(name, password)
 
                     set({ user: data.user ?? null, authStatus: 'authenticated' })
+                    console.warn('cookie creada, autenticado')
 
                     return true
                 } catch (error) {
@@ -52,6 +51,7 @@ export const useAuthStore = create<AuthState>()(
             logout: async () => {
                 try {
                     await logoutAction()
+                    console.warn('cookie eliminada, no autenticado')
                 } catch (error) {
                     console.error("Error en el backend al hacer logout:", error)
                 } finally {
@@ -72,6 +72,9 @@ export const useAuthStore = create<AuthState>()(
                         user: user,
                         authStatus: 'authenticated',
                     })
+
+                    console.warn('estatus actualizado, autenticado')
+
                     return true
                 } catch (error) {
                     set({
@@ -83,24 +86,11 @@ export const useAuthStore = create<AuthState>()(
             }
         }),
         {
-            name: AUTH_STORAGE_KEY,
-            storage: createJSONStorage(() => sessionStorage),
+            name: 'auth-storage',
             partialize: (state) => ({
                 user: state.user,
-                authStatus: state.authStatus,
+                token: state.token
             }),
-            merge: (persistedState, currentState) => {
-                const merged = {
-                    ...currentState,
-                    ...(persistedState as Partial<AuthState>),
-                } as AuthState
-
-                if (merged.authStatus !== 'authenticated') {
-                    merged.user = null
-                }
-
-                return merged
-            },
         }
     )
 )
