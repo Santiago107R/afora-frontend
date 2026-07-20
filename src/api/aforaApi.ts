@@ -9,7 +9,8 @@ aforaApi.useResponseInterceptor(async (response) => {
 
         useAuthStore.getState().clear()
 
-        window.location.href = '/auth/login'
+        // window.location.href = '/#/auth/login'
+        window.location.hash = '/auth/login'
     }
 
     return response
