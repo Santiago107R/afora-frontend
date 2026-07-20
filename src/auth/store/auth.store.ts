@@ -1,9 +1,9 @@
-import type { User } from "@/user/types/clase.response";
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { loginAction } from "../actions/login.action";
-import { checkAuthAction } from "../actions/check-auth.action";
-import { logoutAction } from "../actions/logout.action";
+import type { User } from "@/user/types/clase.response"
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
+import { loginAction } from "../actions/login.action"
+import { checkAuthAction } from "../actions/check-auth.action"
+import { logoutAction } from "../actions/logout.action"
 
 type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking'
 
@@ -17,6 +17,7 @@ type AuthState = {
     login: (name: string, password: string) => Promise<boolean>
     logout: () => void
     checkAuthStatus: () => Promise<boolean>
+    clear: () => void
 }
 
 const normalizeRoles = (roles?: string[] | null) => (roles ?? []).map((role) => role?.toLowerCase?.() ?? role)
@@ -39,7 +40,7 @@ export const useAuthStore = create<AuthState>()(
                     const data = await loginAction(name, password)
 
                     set({ user: data.user ?? null, authStatus: 'authenticated' })
-                    console.warn('cookie creada, autenticado')
+                    // console.warn('cookie creada, autenticado')
 
                     return true
                 } catch (error) {
@@ -51,7 +52,7 @@ export const useAuthStore = create<AuthState>()(
             logout: async () => {
                 try {
                     await logoutAction()
-                    console.warn('cookie eliminada, no autenticado')
+                    // console.warn('cookie eliminada, no autenticado')
                 } catch (error) {
                     console.error("Error en el backend al hacer logout:", error)
                 } finally {
@@ -73,7 +74,7 @@ export const useAuthStore = create<AuthState>()(
                         authStatus: 'authenticated',
                     })
 
-                    console.warn('estatus actualizado, autenticado')
+                    // console.warn('estatus actualizado, autenticado')
 
                     return true
                 } catch (error) {
@@ -83,7 +84,11 @@ export const useAuthStore = create<AuthState>()(
                     })
                     return false
                 }
-            }
+            },
+
+            clear: async () => {
+                set({ user: null, token: null, authStatus: 'not-authenticated' })
+            },
         }),
         {
             name: 'auth-storage',
