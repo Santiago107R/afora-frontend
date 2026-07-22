@@ -21,28 +21,25 @@ const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Pro
         <Icon className="w-11 h-11 sm:w-13 sm:h-13 md:w-15 md:h-15 mr-8" />
       </div>
 
-      <nav className="sticky top-0 z-50 flex items-center px-6 bg-[#2C3E50] text-white border-t border-[#1A2B3C] shadow-lg py-[clamp(0.8rem,3vw,1.1rem)]">
-
-        <div className="flex flex-1 justify-center items-center gap-6">
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 bg-[#2C3E50] text-white border-t border-[#1A2B3C] shadow-lg py-[clamp(0.8rem,3vw,1.1rem)]">
+        <div className="flex items-center gap-4 sm:gap-6">
           {link.map((item) => (
             <Link
               key={item.name}
               to={item.url}
-              className="hover:text-blue-200 transition-colors px-4 py-2 flex font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-[27px]"
+              className="hover:text-blue-200 transition-colors"
             >
-              {item.name}
+              <p className="font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-27px">{item.name}</p>
             </Link>
           ))}
         </div>
 
         {button && (
-          <div className="shrink-0">
-            <Button
-              variant={"ghost"}
-              className="font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-[27px] flex"
-              {...button}
-            />
-          </div>
+          <Button
+            variant={"ghost"}
+            className="font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-27px"
+            {...button}
+          />
         )}
       </nav>
     </>
