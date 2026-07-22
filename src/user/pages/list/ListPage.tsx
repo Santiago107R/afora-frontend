@@ -54,7 +54,7 @@ const ListPage = () => {
       </div>
 
       <div className="size-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden">
-        <div className="size-full overflow-auto bg-[#d0f6df] border border-neutral-800 rounded-xl">
+        <div className="size-full overflow-auto border border-neutral-100 rounded-xl p-2">
           <AulaGrid aulas={filteredAulas} />
         </div>
       </div>
