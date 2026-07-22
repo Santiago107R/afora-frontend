@@ -12,7 +12,7 @@ const UserLayout = () => {
       {/* {name: "Cerrar Sesión", url: '/logout',} */}
       <CustomHeader
         title={"Afora"}
-        link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/lista' }]}
+        link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/user/lista' }]}
         button={{ onClick: logout, children: "Cerrar Sesión" }}
         logo={'/favicon.svg'}
         icon={User2}
