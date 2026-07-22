@@ -53,11 +53,16 @@ const ListPage = () => {
         />
       </div>
 
-      <div className="min-h-0 w-full overflow-auto border border-neutral-100 rounded-xl p-4">
-        <AulaGrid aulas={filteredAulas} />
+      {/* <div className="min-h-0 w-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden">
+        <div className="min-h-0 w-full overflow-auto border border-neutral-100 rounded-xl">
+          <AulaGrid aulas={filteredAulas} />
+        </div>
+      </div> */}
+      <div className="min-h-0 w-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden">
+        <div className="min-h-0 w-full overflow-auto border border-neutral-100 rounded-xl p-4">
+          <AulaGrid aulas={filteredAulas} />
+        </div>
       </div>
-      {/* <div className="min-h-0 w-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden"> */}
-      {/* </div> */}
 
       {currentAula && (
         <AulaModal

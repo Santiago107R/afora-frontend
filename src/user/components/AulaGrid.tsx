@@ -16,10 +16,10 @@ const AulaGrid = ({ aulas }: Props) => {
     }
 
     return (
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
 
             {aulas.map((aula) => (
-                <AulaCard key={aula.name} name={aula.name} capacity={aula.capacity} state={aula.state} clase={aula.clase} shadow />
+                <AulaCard key={aula.name} name={aula.name} capacity={aula.capacity} state={aula.state} clase={aula.clase} />
             ))}
 
         </div>
