@@ -8,7 +8,7 @@ import { useAuthStore } from "@/auth/store/auth.store"
 const UserLayout = () => {
   const { logout } = useAuthStore()
   return (
-    <div className="size-full grid grid-cols-1 grid-rows-[min-content_1fr]">
+    <div className="min-h-screen w-full grid grid-cols-1 grid-rows-[min-content_1fr]">
       {/* <div className="flex flex-col min-h-screen"> */}
       {/* {name: "Cerrar Sesión", url: '/logout',} */}
       <CustomHeader
