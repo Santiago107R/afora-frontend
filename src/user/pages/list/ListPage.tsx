@@ -42,7 +42,7 @@ const ListPage = () => {
   }, [aulas, selectedAula]);
 
   return (
-    <div className="p-10 flex flex-col gap-6">
+    <div className="size-full grid grid-cols-1 grid-rows-[min-content-1fr] p-10 gap-6">
       <div>
         <AulaFilters
           icon={Search} placeholder="Buscar aula..." aulas={aulas}
@@ -53,7 +53,11 @@ const ListPage = () => {
         />
       </div>
 
-      <AulaGrid aulas={filteredAulas} />
+      <div className="size-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden">
+        <div className="size-full overflow-auto bg-[#d0f6df] border border-neutral-800 rounded-xl">
+          <AulaGrid aulas={filteredAulas} />
+        </div>
+      </div>
 
       {currentAula && (
         <AulaModal

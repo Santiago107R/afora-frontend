@@ -120,6 +120,26 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+}
+
+#root {
+  flex: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 @theme inline {
     --font-sans: 'Inter Variable', sans-serif;
     
