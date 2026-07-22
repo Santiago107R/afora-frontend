@@ -38,11 +38,8 @@ const LoginPage = () => {
         <>
             <div className="flex flex-row justify-center items-center gap-10 min-h-screen w-full">
                 {/* example <div class="bg-(--color-primary) text-[var(--color-foreground)]"></div> */}
-                <div className="flex flex-col items-center bg-(--color-primary) p-8 border border-gray-100 rounded-xl gap-4 shadow-lg">
+                <div className="hidden lg:flex flex-col items-center bg-(--color-primary) p-8 border border-gray-100 rounded-xl gap-4 shadow-lg">
                     <h2 className="flex flex-col items-center text-center text-4xl font-bold text-gray-900 gap-2 mb-4">
-                        {/* <span>¡Bienvenido</span>
-                        <span>a</span>
-                        <span>Afora!</span> */}
                         ¡Bienvenido a Afora!
                     </h2>
                     <p className="flex flex-col text-xl">Una app pensada para optimizar tu <span>día a día y acompañarte en cada jornada.</span></p>
