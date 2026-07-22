@@ -10,7 +10,7 @@ const HomePage = () => {
                 <SectionCard title="Otra tarjeta de ejemplo" description="Esta es otra descripción de ejemplo para la tarjeta." textButton="Ver más" img={'/favicon.svg'} url="/example2" shadow />
             </div>
 
-            <div className="min-h-0 w-full rounded-xl">
+            <div className="min-h-0 w-full">
                 <ScheduleTable data={[
                     { day: 'Martes', time: '12:10-13:10', location: 'Sala Grande', subject: 'Programación' },
                     { day: 'Lunes', time: '16:45-17:45', location: 'cocina', subject: 'modelos y sistemas' },
