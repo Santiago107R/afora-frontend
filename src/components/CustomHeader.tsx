@@ -34,7 +34,7 @@ const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Pro
 
         {
           button && (
-            <Button variant={"ghost"} className={'ml-auto'} {...button} />
+            <Button variant={"ghost"} className={'ml-auto font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-27px'} {...button} />
           )
         }
       </nav>
