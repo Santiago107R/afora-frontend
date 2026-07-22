@@ -13,7 +13,7 @@ const UserLayout = () => {
       <div className="h-fit w-full">
         <CustomHeader
           title={"Afora"}
-          link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/user/lista' }]}
+          link={[{ name: "Inicio", url: '/user' }, { name: "Lista", url: '/user/lista' }]}
           button={{ onClick: logout, children: "Cerrar Sesión" }}
           logo={'/favicon.svg'}
           icon={User2}
