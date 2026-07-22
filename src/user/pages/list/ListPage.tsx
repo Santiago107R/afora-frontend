@@ -42,7 +42,7 @@ const ListPage = () => {
   }, [aulas, selectedAula]);
 
   return (
-    <div className="h-screen w-full grid grid-cols-1 grid-rows-[min-content_1fr] p-10 gap-6 overflow-hidden">
+    <div className="h-full w-full grid grid-cols-1 grid-rows-[min-content_1fr] p-10 gap-6 overflow-hidden">
       <div>
         <AulaFilters
           icon={Search} placeholder="Buscar aula..." aulas={aulas}
@@ -53,11 +53,11 @@ const ListPage = () => {
         />
       </div>
 
-      <div className="min-h-0 w-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden">
-        <div className="size-full overflow-auto border border-neutral-100 rounded-xl p-2">
-          <AulaGrid aulas={filteredAulas} />
-        </div>
+      <div className="min-h-0 w-full overflow-auto border border-neutral-100 rounded-xl p-2">
+        <AulaGrid aulas={filteredAulas} />
       </div>
+      {/* <div className="min-h-0 w-full p-3 grid grid-cols-1 grid-rows-1 overflow-hidden"> */}
+      {/* </div> */}
 
       {currentAula && (
         <AulaModal
