@@ -8,7 +8,7 @@ import { useAuthStore } from "@/auth/store/auth.store"
 const UserLayout = () => {
   const { logout } = useAuthStore()
   return (
-    <div className="min-h-screen w-full grid grid-cols-1 grid-rows-[min-content_1fr]">
+    <div className="h-screen w-full grid grid-cols-1 grid-rows-[auto_1fr_auto]">
       {/* <div className="flex flex-col min-h-screen"> */}
       {/* {name: "Cerrar Sesión", url: '/logout',} */}
       <CustomHeader
@@ -18,7 +18,7 @@ const UserLayout = () => {
         logo={'/favicon.svg'}
         icon={User2}
       />
-      <main className="grow">
+      <main className="min-h-0 w-full h-full">
         <Outlet />
       </main>
       <CustomFooter description="Derechos reservados por Afora" link={[{ name: "Arturitorodriguezvera@gmail.com", url: "#" }, { name: "ezequielnicolasacosta@gmail.com", url: "#" }]} />
