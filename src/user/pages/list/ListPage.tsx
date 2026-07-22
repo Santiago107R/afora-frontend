@@ -42,7 +42,7 @@ const ListPage = () => {
   }, [aulas, selectedAula]);
 
   return (
-    <div className="h-full w-full grid grid-cols-1 grid-rows-[min-content_1fr] p-10 gap-6 overflow-hidden">
+    <div className="p-10 flex flex-col gap-6">
       <div>
         <AulaFilters
           icon={Search} placeholder="Buscar aula..." aulas={aulas}
