@@ -28,7 +28,7 @@ const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Pro
             <Link
               key={item.name}
               to={item.url}
-              className="hover:text-blue-200 transition-colors px-4 py-2 flex items-center font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-[27px]"
+              className="hover:text-blue-200 transition-colors px-4 py-2 flex font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-[27px]"
             >
               {item.name}
             </Link>
@@ -39,7 +39,7 @@ const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Pro
           <div className="shrink-0">
             <Button
               variant={"ghost"}
-              className="font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-[27px] flex items-center"
+              className="font-montserrat text-lg sm:text-2xl md:text-2xl lg:text-[27px] flex"
               {...button}
             />
           </div>
