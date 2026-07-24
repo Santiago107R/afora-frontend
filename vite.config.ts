@@ -4,13 +4,15 @@ import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 import path from "path"
 
+const backendOrigin = "https://afora-backend.onrender.com"
+
 const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' ws: wss:",
+  `connect-src 'self' ${backendOrigin} ws: wss:`,
   "object-src 'none'",
   "base-uri 'self'",
 ].join('; ')
