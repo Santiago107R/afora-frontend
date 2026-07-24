@@ -69,6 +69,7 @@ const LoginPage = () => {
                                 type="text"
                                 className="w-full text-gray-800 placeholder-gray-400 py-3 bg-transparent focus:outline-none text-lg"
                                 name="name"
+                                id="name"
                                 placeholder="ej: Juan"
                             />
                         </div>
@@ -91,6 +92,7 @@ const LoginPage = () => {
                                 type={!showPassword ? "text" : "password"}
                                 className="w-full text-gray-800 placeholder-gray-400 py-3 bg-transparent focus:outline-none text-lg"
                                 name="password"
+                                id="password"
                                 placeholder=". . . . ."
                             />
                         </div>
