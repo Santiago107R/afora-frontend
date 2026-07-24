@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 interface ScheduleEntry {
     day: 'Lunes' | 'Martes' | 'Miércoles' | 'Jueves' | 'Viernes';
     time: string;
@@ -55,12 +57,12 @@ const ScheduleTable = ({ data }: Props) => {
                                     return (
                                         <td
                                             key={`${day}-${hour}`}
-                                            className={`border border-gray-400 p-1 transition-colors`}
-                                            style={
-                                                entry
-                                                    ? { backgroundColor: `color-mix(in srgb, ${entry.color}, white 70%)` }
-                                                    : undefined
-                                            }
+                                            className={cn(`border border-gray-400 p-1 transition-colors`, entry && `bg-${entry.color}-200`)}
+                                        // style={
+                                        //     entry
+                                        //         ? { backgroundColor: `color-mix(in srgb, ${entry.color}, white 70%)` }
+                                        //         : undefined
+                                        // }
                                         >
                                             {entry && (
                                                 <div className="flex flex-col justify-center leading-tight">
