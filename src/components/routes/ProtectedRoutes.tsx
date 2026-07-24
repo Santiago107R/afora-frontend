@@ -7,7 +7,7 @@ export const AuthenticatedRoute = ({ children }: PropsWithChildren) => {
 
     if (authStatus === 'checking') return null
 
-    if (authStatus === 'not-authenticated') return <Navigate to="/auth/login" />
+    if (authStatus === 'not-authenticated') return <Navigate to="/auth/logindev" />
 
     return children
 }
@@ -27,7 +27,7 @@ export const AdminRoute = ({ children }: PropsWithChildren) => {
 
     if (authStatus === 'checking') return null
 
-    if (authStatus === 'not-authenticated') return <Navigate to="/auth/login" />
+    if (authStatus === 'not-authenticated') return <Navigate to="/auth/logindev" />
 
     if (!isAdmin()) return <Navigate to="/" />
 

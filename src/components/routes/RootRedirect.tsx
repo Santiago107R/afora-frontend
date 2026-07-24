@@ -7,7 +7,7 @@ export const RootRedirect = () => {
     if (authStatus === 'checking') return null
 
     if (authStatus === 'not-authenticated') {
-        return <Navigate to="/auth/login" replace />
+        return <Navigate to="/auth/logindev" replace />
     }
 
     if (isAdmin()) {

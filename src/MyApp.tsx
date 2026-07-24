@@ -10,7 +10,7 @@ import { Toaster } from 'sonner'
 import { useAuthStore } from './auth/store/auth.store'
 import { CustomFullScreenLoading } from './components/CustomFullScreenLoading'
 
-const queryCLient = new QueryClient()
+const queryClient = new QueryClient()
 
 const CheckAuthProvider = ({ children }: PropsWithChildren) => {
     const { checkAuthStatus } = useAuthStore()
@@ -31,7 +31,7 @@ const CheckAuthProvider = ({ children }: PropsWithChildren) => {
 const MyApp = () => {
     return (
         <>
-            <QueryClientProvider client={queryCLient}>
+            <QueryClientProvider client={queryClient}>
                 <Toaster />
 
                 <CheckAuthProvider>

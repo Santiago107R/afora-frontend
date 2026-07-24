@@ -10,6 +10,7 @@ import { AdminRoute, AuthenticatedRoute, NotAuthenticatedRoute } from "./compone
 import AuthLayout from "./auth/layouts/AuthLayout"
 import { RootRedirect } from "./components/routes/RootRedirect"
 import HomeAdminPage from "./admin/pages/home/HomeAdminPage"
+import LoginDevPage from "./auth/pages/logindev/LoginDevPage"
 
 const UserLayout = lazy(() => import('./user/layouts/UserLayout'))
 const AdminLayout = lazy(() => import('./admin/layouts/AdminLayout'))
@@ -69,7 +70,11 @@ export const AppRouter = createHashRouter([
             {
                 path: 'register',
                 element: <RegisterPage />
-            }
+            },
+            {
+                path: 'logindev',
+                element: <LoginDevPage />
+            },
         ]
     },
 

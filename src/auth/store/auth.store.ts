@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware"
 import { loginAction } from "../actions/login.action"
 import { checkAuthAction } from "../actions/check-auth.action"
 import { logoutAction } from "../actions/logout.action"
+import { admin, user } from "../interfaces/users.dev"
 
 type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking'
 
@@ -14,6 +15,7 @@ type AuthState = {
 
     isAdmin: () => boolean
 
+    logindev: (rol: string) => boolean
     login: (name: string, password: string) => Promise<boolean>
     logout: () => void
     checkAuthStatus: () => Promise<boolean>
@@ -33,6 +35,25 @@ export const useAuthStore = create<AuthState>()(
             isAdmin: () => {
                 if (get().authStatus !== 'authenticated') return false
                 return isAdminRole(get().user?.roles)
+            },
+
+            logindev: (rol: string) => {
+
+                switch (rol) {
+                    case 'user':
+                        set({ user: user ?? null, authStatus: 'authenticated' })
+                        break;
+
+                    case 'admin':
+                        set({ user: admin ?? null, authStatus: 'authenticated' })
+                        break;
+
+                    default:
+                        set({ user: null, authStatus: 'not-authenticated' })
+                        break;
+                }
+
+                return true
             },
 
             login: async (name: string, password: string) => {

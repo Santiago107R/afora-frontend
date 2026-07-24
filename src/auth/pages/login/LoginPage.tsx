@@ -40,7 +40,7 @@ const LoginPage = () => {
                 {/* example <div class="bg-(--color-primary) text-[var(--color-foreground)]"></div> */}
                 <div className="hidden lg:flex flex-col items-center bg-(--color-primary) p-8 border border-gray-100 rounded-xl gap-4 shadow-lg">
                     <h2 className="flex flex-col items-center text-center text-4xl font-bold text-gray-900 gap-2 mb-4">
-                        ¡Bienvenido a Aforaa!
+                        ¡Bienvenido a Afora!
                     </h2>
                     <p className="flex flex-col text-xl">Una app pensada para optimizar tu <span>día a día y acompañarte en cada jornada.</span></p>
 
@@ -69,6 +69,7 @@ const LoginPage = () => {
                                 type="text"
                                 className="w-full text-gray-800 placeholder-gray-400 py-3 bg-transparent focus:outline-none text-lg"
                                 name="name"
+                                id="name"
                                 placeholder="ej: Juan"
                             />
                         </div>
@@ -91,6 +92,7 @@ const LoginPage = () => {
                                 type={!showPassword ? "text" : "password"}
                                 className="w-full text-gray-800 placeholder-gray-400 py-3 bg-transparent focus:outline-none text-lg"
                                 name="password"
+                                id="password"
                                 placeholder=". . . . ."
                             />
                         </div>
