@@ -1,19 +1,19 @@
 :root {
   --color-primary: #16c6cc;
   --color-primary-hover: #13adb3;
-  --color-secondary: #7CE0E4;
-  --color-thirty: #58C3DB;
+  --color-secondary: #7ce0e4;
+  --color-thirty: #58c3db;
 
   --color-black-primary: #000000;
   --color-black-secondary: #111111;
   --color-black-thirty: #111111;
 
-  --color-white-primary: #FFFFFF;
+  --color-white-primary: #ffffff;
 
-  --color-green-primary: #15FF00;
+  --color-green-primary: #15ff00;
 
-  --color-red-primary: #FF0000;
-  
+  --color-red-primary: #ff0000;
+
   --color-background: #f8fafc;
 }
 

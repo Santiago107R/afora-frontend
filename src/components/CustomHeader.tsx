@@ -17,7 +17,7 @@ const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Pro
 
   return (
     <>
-      <div className="bg-[#1A2B3C] text-white flex items-center justify-between py-[clamp(1vw,3vw,1rem)]">
+      <div className="bg-(--color-primary) text-white flex items-center justify-between py-[clamp(1vw,3vw,1rem)]">
         <img src={logo} alt="logo" className="w-11 h-11 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-20 lg:h-20 object-contain ml-4 sm:ml-8" />
         <h1 className="text-3xl sm:text-4xl md:text-1vw lg:text-5xl font-antón text-center flex-1">{title}</h1>
         <Icon className="w-11 h-11 sm:w-13 sm:h-13 md:w-15 md:h-15 mr-4 sm:mr-8" />
