@@ -8,11 +8,11 @@ interface Props {
 
 const CustomFooter = ({ description, link }: Props) => {
   return (
-    <footer className="bg-[#1A2B3C] border-t-2 p-5 text-white">
+    <footer className="bg-(--color-primary) border-t-2 p-5 text-white">
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
 
-        <p className="text-gray-400 text-sm">
+        <p className="text-gray-200 text-sm">
           &copy; {description}
         </p>
 

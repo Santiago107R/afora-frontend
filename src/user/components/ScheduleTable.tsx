@@ -27,7 +27,7 @@ const ScheduleTable = ({ data }: Props) => {
     };
 
     return (
-        <div className="w-full max-w-5xl mx-auto p-4 md:p-8 bg-[#D9D9D9] rounded-[30px] md:rounded-[40px] shadow-2xl border border-gray-300">
+        <div className="w-full max-w-5xl mx-auto p-4 md:p-8 bg-[#D9D9D9] rounded-[30px] md:rounded-[40px]  border border-gray-300">
 
             <h2 className="text-3xl md:text-4xl font-anton mb-6 uppercase text-center text-black">
                 Mis horarios

@@ -6,8 +6,8 @@ const HomePage = () => {
         <div className="h-full p-10 grid grid-cols-1 grid-rows-[auto_1fr] gap-6">
 
             <div className="flex lg:flex-row justify-between items-center flex-col sm:justify-center gap-10 lg:gap-20">
-                <SectionCard title="Título de la tarjeta de ejemplo" description="Esta es una descripción de ejemplo para la tarjeta." textButton="Ver horarios" img={'/favicon.svg'} url="/example" shadow />
-                <SectionCard title="Otra tarjeta de ejemplo" description="Esta es otra descripción de ejemplo para la tarjeta." textButton="Ver más" img={'/favicon.svg'} url="/example2" shadow />
+                <SectionCard title="Título de la tarjeta de ejemplo" description="Esta es una descripción de ejemplo para la tarjeta." textButton="Ver horarios" img={'/favicon.svg'} url="/example" />
+                <SectionCard title="Otra tarjeta de ejemplo" description="Esta es otra descripción de ejemplo para la tarjeta." textButton="Ver más" img={'/favicon.svg'} url="/example2"  />
             </div>
 
             <div className="min-h-0 w-full">
