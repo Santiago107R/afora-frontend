@@ -62,7 +62,7 @@ const ListPage = () => {
           name={currentAula.name}
           description={currentAula.description}
           capacity={currentAula.capacity}
-          state={currentAula.estado}
+          estado={currentAula.estado.name}
           clase={currentAula.clase}
           onClose={clearSelectedAula}
         />

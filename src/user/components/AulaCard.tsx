@@ -1,23 +1,23 @@
+import { cn } from "@/lib/utils";
 import { useSelectedAulaStore } from "@/store/selectedAulaStore";
-import type { state } from "../types/aula.response";
 
 interface Props {
     shadow?: boolean;
     name: string;
     capacity: number;
-    state: state;
+    estado: string;
     clase: any[]
 
 }
 
-const AulaCard = ({ shadow, name, capacity, state }: Props) => {
+const AulaCard = ({ shadow, name, capacity, estado }: Props) => {
     const { setSelectedAula: openModal } = useSelectedAulaStore()
 
-    const statusColors = {
-        available: "text-green-500",
-        busy: "text-red-500",
-        maintenance: "text-gray-500",
-    }
+    // const statusColors = {
+    //     available: "text-green-500",
+    //     busy: "text-red-500",
+    //     maintenance: "text-gray-500",
+    // }
 
     return (
         <>
@@ -65,8 +65,9 @@ const AulaCard = ({ shadow, name, capacity, state }: Props) => {
                                     Estado:&nbsp;
                                 </span>
 
-                                <span className={statusColors[state]}>
-                                    {state === 'available' ? 'Disponible' : state === 'maintenance' ? 'Mantenimiento' : 'Ocupado'}
+                                {/* <span className={statusColors[estado]}> */}
+                                <span className={cn(estado === 'available' ? "text-green-500" : estado === 'busy' ? "text-red-500" : "text-gray-500")}>
+                                    {estado === 'available' ? 'Disponible' : estado === 'maintenance' ? 'Mantenimiento' : 'Ocupado'}
                                 </span>
                             </p>
                         </li>
