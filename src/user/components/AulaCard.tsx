@@ -26,7 +26,14 @@ const AulaCard = ({ shadow, name, capacity, estado }: Props) => {
                 className={` flex flex-col py-5 px-1 bg-[#D9D9D9] rounded-2xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-lg cursor-pointer transition hover:scale-105 border-[#D9D9D9] hover:border-[#3B78B3] border-2 ${shadow && 'shadow-[10px_10px_7px_rgba(0,0,0,0.25)]'} `}
             >
 
-                <div className={cn("rounded-full", estado === 'available' ? "text-green-500" : estado === 'busy' ? "text-red-500" : "text-gray-500")}></div>
+                <div
+                    className={cn(
+                        "rounded-full w-3 h-3",
+                        estado === 'available' ? "bg-green-500" :
+                            estado === 'busy' ? "bg-red-500" :
+                                "bg-gray-500"
+                    )}
+                ></div>
 
                 <div className="flex gap-6 sm:gap-8 md:gap-4 lg:gap-10 ml-8 pb-1">
 
