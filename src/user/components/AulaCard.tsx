@@ -28,7 +28,7 @@ const AulaCard = ({ shadow, name, capacity, estado }: Props) => {
 
                 <div
                     className={cn(
-                        "rounded-full w-3 h-3",
+                        "rounded-full w-3 h-4 justify-end pr-3",
                         estado === 'available' ? "bg-green-500" :
                             estado === 'busy' ? "bg-red-500" :
                                 "bg-gray-500"
