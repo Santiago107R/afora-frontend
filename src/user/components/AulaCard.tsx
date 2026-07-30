@@ -26,7 +26,7 @@ const AulaCard = ({ shadow, name, capacity, estado }: Props) => {
                 className={` flex flex-col py-5 px-1 bg-[#D9D9D9] rounded-2xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-lg cursor-pointer transition hover:scale-105 border-[#D9D9D9] hover:border-[#3B78B3] border-2 ${shadow && 'shadow-[10px_10px_7px_rgba(0,0,0,0.25)]'} `}
             >
 
-                <div className="flex gap-6 sm:gap-8 md:gap-4 lg:gap-10 ml-8 border-b-2 border-gray-400 pb-5">
+                <div className="flex gap-6 sm:gap-8 md:gap-4 lg:gap-10 ml-8 pb-1">
 
                     {/* 
                         <img
@@ -41,6 +41,8 @@ const AulaCard = ({ shadow, name, capacity, estado }: Props) => {
                     </h2>
 
                 </div>
+
+                <div className="w-lg border-b-2 border-gray-400 pb-4"></div>
 
                 <div className="flex flex-col font-anybody ml-10 mt-4">
                     <ul className="text-sm sm:text-md md:text-lg">
