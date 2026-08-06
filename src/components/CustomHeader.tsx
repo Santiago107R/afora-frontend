@@ -32,16 +32,16 @@ const CustomHeader = ({ link, icon: Icon, button = undefined }: Props) => {
                   Cerrar sesión
                 </Button>
 
-                
+
               </>
             )}
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg ">
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-12 md:h-12" />
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg ">
+              <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-12 md:h-12" />
 
-                  <span className={navTextStyle}>
-                    Gonzalo Perez
-                  </span>
-                </div>
+              <span className={navTextStyle}>
+                Gonzalo Perez
+              </span>
+            </div>
           </div>
         </div>
       </div>
