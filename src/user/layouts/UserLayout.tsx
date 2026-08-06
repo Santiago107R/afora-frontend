@@ -1,5 +1,4 @@
 import { Outlet } from "react-router"
-import CustomFooter from "../../components/CustomFooter"
 import CustomHeader from "../../components/CustomHeader"
 import { User2 } from "lucide-react"
 import { useAuthStore } from "@/auth/store/auth.store"
@@ -12,7 +11,6 @@ const UserLayout = () => {
 
       <div className="h-fit w-full">
         <CustomHeader
-          title={"Afora"}
           link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/user/lista' }]}
           button={{ onClick: logout, children: "Cerrar Sesión" }}
           logo={'/favicon.svg'}
@@ -25,10 +23,7 @@ const UserLayout = () => {
       </main>
 
       <div className="h-fit w-full">
-        <CustomFooter
-          description="Derechos reservados por Afora"
-          link={[{ name: "Arturitorodriguezvera@gmail.com", url: "#" }, { name: "ezequielnicolasacosta@gmail.com", url: "#" }]}
-        />
+        
       </div>
 
     </div>
