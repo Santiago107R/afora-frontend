@@ -3,46 +3,63 @@ import type { ButtonProps } from "@base-ui/react"
 import type { LucideIcon } from "lucide-react"
 import { Link } from "react-router"
 import { Button } from "./ui/button"
+import logo_negro from "/public/logo_negro.png"
+
 
 interface Props {
-  title: string
   link: LinkProp[]
   icon: LucideIcon
   logo: string
   button?: ButtonProps | undefined
 }
 
-const CustomHeader = ({ title, link, icon: Icon, logo, button = undefined }: Props) => {
-  const navTextStyle = "font-montserrat text-sm sm:text-base md:text-xl lg:text-[27px] leading-none"
+const CustomHeader = ({ link, icon: Icon, button = undefined }: Props) => {
+
+  const navTextStyle = "font-montserrat text-sm sm:text-base md:text-xl lg:text-[18px] leading-none"
 
   return (
     <>
-      <div className="bg-[#1A2B3C] text-white flex items-center justify-between py-[clamp(1vw,3vw,1rem)]">
-        <img src={logo} alt="logo" className="w-11 h-11 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-20 lg:h-20 object-contain ml-4 sm:ml-8" />
-        <h1 className="text-3xl sm:text-4xl md:text-1vw lg:text-5xl font-antón text-center flex-1">{title}</h1>
-        <Icon className="w-11 h-11 sm:w-13 sm:h-13 md:w-15 md:h-15 mr-4 sm:mr-8" />
+      <div className="bg-(--color-primary)  flex items-center justify-between ">
+        <img src={logo_negro} alt="logo" className="w-15 h-15 sm:w-20 sm:h-20 md:w-25 md:h-25 lg:w-30 lg:h-30 object-contain " />
+
+        <div className="flex items-center gap-2 mr-2 sm:mr-4">
+          <div className="flex items-center gap-3 mr-2 sm:mr-4">
+            {button && (
+              <>
+                <Button
+                  className={` text-bg-black h-auto px-3 py-2 bg-transparent hover:bg-(--color-primary-hover) ${navTextStyle}`}{...button}
+                >
+                  Cerrar sesión
+                </Button>
+
+                
+              </>
+            )}
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg ">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-12 md:h-12" />
+
+                  <span className={navTextStyle}>
+                    Gonzalo Perez
+                  </span>
+                </div>
+          </div>
+        </div>
       </div>
 
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-4 sm:px-8 bg-[#2C3E50] text-white border-t border-[#1A2B3C] shadow-lg py-3">
-        <div className="flex items-center gap-3 sm:gap-6">
-          {link.map((item) => (
-            <Link
-              key={item.name}
-              to={item.url}
-              className={`hover:text-blue-200 transition-colors ${navTextStyle}`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
+      <nav className="sticky top-0 z-50 flex justify-center py-2 ">
+        <div className="flex items-center  bg-black rounded-full pr-8 pl-2 py-2 gap-20 ">
 
-        {button && (
-          <Button
-            variant={"ghost"}
-            className={`h-auto p-0 hover:bg-transparent hover:text-blue-200 focus-visible:ring-0 ${navTextStyle}`}
-            {...button}
-          />
-        )}
+          <div className="w-8 h-8 bg-white rounded-full shrink-0" />
+
+          <div className="flex items-center gap-20 pr-4">
+            {link.map((item) => (
+              <Link key={item.name} to={item.url} className=" text-white font-montserrat text-sm sm:text-base md:text-lg hover:text-(--color-primary) transition-colors" >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+        </div>
       </nav>
     </>
   )
