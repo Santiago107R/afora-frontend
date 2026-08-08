@@ -16,6 +16,7 @@ type AulaFormValues = {
     heightInMeters: string
     classroomType: string
     capacity: string
+    deductTeacherSpace: string
     estadoId: string
 }
 
@@ -38,6 +39,7 @@ const AulasPage = () => {
         squareMeters: '',
         heightInMeters: '',
         classroomType: '',
+        deductTeacherSpace: '',
         capacity: '',
         estadoId: '',
     })
@@ -50,6 +52,7 @@ const AulasPage = () => {
                 squareMeters: selectedEntity.squareMeters?.toString() ?? '',
                 heightInMeters: selectedEntity.heightInMeters?.toString() ?? '',
                 classroomType: selectedEntity.classroomType ?? '',
+                deductTeacherSpace: selectedEntity.deductTeacherSpace === null || selectedEntity.deductTeacherSpace === undefined ? '' : String(selectedEntity.deductTeacherSpace),
                 capacity: selectedEntity.capacity?.toString() ?? '',
                 estadoId: selectedEntity.estado?.id?.toString() ?? '',
             })
@@ -63,6 +66,7 @@ const AulasPage = () => {
             squareMeters: '',
             heightInMeters: '',
             classroomType: '',
+            deductTeacherSpace: '',
             capacity: '',
             estadoId: '',
         })
@@ -88,7 +92,7 @@ const AulasPage = () => {
         const parsedHeightInMeters = Number(formValues.heightInMeters)
         const estadoId = Number(formValues.estadoId)
 
-        if (!formValues.name.trim() || !formValues.description.trim() || !formValues.classroomType || !formValues.estadoId || Number.isNaN(parsedCapacity) || Number.isNaN(parsedSquareMeters) || Number.isNaN(parsedHeightInMeters)) {
+        if (!formValues.name.trim() || !formValues.description.trim() || !formValues.classroomType || !formValues.estadoId || Number.isNaN(parsedSquareMeters) || Number.isNaN(parsedHeightInMeters)) {
             toast.error('Completa todos los campos obligatorios', {
                 position: 'top-right'
             })
@@ -102,7 +106,8 @@ const AulasPage = () => {
             squareMeters: parsedSquareMeters,
             heightInMeters: parsedHeightInMeters,
             classroomType: formValues.classroomType,
-            capacity: parsedCapacity,
+            deductTeacherSpace: null,
+            ...(isCreating ? {} : { capacity: parsedCapacity }),
             id_estado: estadoId,
         }
 
@@ -195,8 +200,8 @@ const AulasPage = () => {
                                 </span>
                                 <input
                                     type="number"
-                                    value={formValues.heightInMeters}
-                                    onChange={(event) => setFormValues((current) => ({ ...current, heightInMeters: event.target.value }))}
+                                    value={formValues.deductTeacherSpace}
+                                    onChange={(event) => setFormValues((current) => ({ ...current, deductTeacherSpace: event.target.value }))}
                                     className="mt-1 w-full [appearance:textfield] rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                                     placeholder="5"
                                 />
@@ -209,13 +214,29 @@ const AulasPage = () => {
                                 </span>
                                 <input
                                     type="number"
+                                    value={formValues.heightInMeters}
+                                    onChange={(event) => setFormValues((current) => ({ ...current, heightInMeters: event.target.value }))}
+                                    className="mt-1 w-full [appearance:textfield] rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                                    placeholder="6"
+                                />
+                            </label>
+                        </div>
+
+                        {!isCreating && (
+                            <label className="block flex-1 text-sm font-medium text-white">
+                                <span className="inline-flex items-center gap-1">
+                                    Capacidad <span className="text-(--color-red-primary)">*</span>
+                                    <Info size={14} className="text-gray-500" />
+                                </span>
+                                <input
+                                    type="number"
                                     value={formValues.capacity}
                                     onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
                                     className="mt-1 w-full [appearance:textfield] rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                                     placeholder="6"
                                 />
                             </label>
-                        </div>
+                        )}
 
                         <label className="block text-sm font-medium text-white">
                             Tipo de aula <span className="text-(--color-red-primary)">*</span>
