@@ -28,7 +28,7 @@ const GenericCard = ({
             </div>
 
             {actions && actions.length > 0 && (
-                <div className="flex flex-row justify-between mt-2">
+                <div className="flex flex-row gap-10 mt-2">
                     {actions.map((action, i) => (
                         <button
                             key={i}
