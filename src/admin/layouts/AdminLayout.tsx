@@ -12,7 +12,7 @@ const AdminLayout = () => {
             <div className="h-fit w-full">
                 <CustomHeader
                     button={{ onClick: logout, children: "Cerrar Sesión" }}
-                    logo={'/favicon.svg'}
+                    logo={'/logo_negro.png'}
                     icon={User2}
                     name={user?.name}
                 />

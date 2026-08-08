@@ -3,7 +3,6 @@ import type { ButtonProps } from "@base-ui/react"
 import type { LucideIcon } from "lucide-react"
 import { Link } from "react-router"
 import { Button } from "./ui/button"
-import logo_negro from "/public/logo_negro.png"
 
 
 interface Props {
@@ -14,14 +13,14 @@ interface Props {
   name?: string
 }
 
-const CustomHeader = ({ link, icon: Icon, button = undefined, name }: Props) => {
+const CustomHeader = ({ link, icon: Icon, button = undefined, name, logo }: Props) => {
 
   const navTextStyle = "font-montserrat text-sm sm:text-base md:text-xl lg:text-[18px] leading-none"
 
   return (
     <>
       <div className="bg-(--color-primary)  flex items-center justify-between ">
-        <img src={logo_negro} alt="logo" className="w-15 h-15 sm:w-20 sm:h-20 md:w-25 md:h-25 lg:w-30 lg:h-30 object-contain " />
+        <img src={logo} alt="logo" className="w-15 h-15 sm:w-20 sm:h-20 md:w-25 md:h-25 lg:w-30 lg:h-30 object-contain " />
 
         <div className="flex items-center gap-2 mr-2 sm:mr-4">
           <div className="flex items-center gap-3 mr-2 sm:mr-4">

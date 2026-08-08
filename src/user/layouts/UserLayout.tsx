@@ -13,7 +13,7 @@ const UserLayout = () => {
         <CustomHeader
           link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/user/lista' }]}
           button={{ onClick: logout, children: "Cerrar Sesión" }}
-          logo={'/favicon.svg'}
+          logo={'/logo_negro.png'}
           icon={User2}
           name={user?.name}
         />
