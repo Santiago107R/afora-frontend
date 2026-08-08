@@ -9,7 +9,7 @@ const HomeAdminPage = () => {
     return (
         <div>
             <Button variant={"destructive"} onClick={logout}>Salir</Button>
-            <Button variant={"default"} onClick={() => navigate('/aulas')}>Salir</Button>
+            <Button variant={"default"} onClick={() => navigate('/admin/aulas')}>Aulas</Button>
         </div>
     )
 }
