@@ -15,7 +15,7 @@ const AulaAdminCard = ({ name, capacity, estado }: Props) => {
 
             <div className="flex flex-row gap-5 mt-3">
                 <div className="bg-(--color-primary) p-1 rounded-sm">
-                    <p className="font-bold">Detalles</p>
+                    <p className="font-bold text-[#1A1A1A]">Detalles</p>
                 </div>
 
                 <div className="bg-(--color-primary) p-1 rounded-sm">
