@@ -25,8 +25,8 @@ const GenericContainer = ({
     searchValue = "",
     onSearchChange,
     searchPlaceholder = "Buscar",
-    className = "bg-(--color-gray-primary) rounded-lg border border-black",
-    classNameChildren = "p-4"
+    className = "bg-(--color-gray-primary) rounded-lg border border-black flex flex-col min-h-0",
+    classNameChildren = "flex-1 min-h-0 p-4"
 }: GenericContainerProps) => {
     return (
         <div className={className}>

@@ -12,7 +12,7 @@ const AulasPage = () => {
     }
 
     return (
-        <div className="h-full p-10 grid grid-cols-1 grid-rows-[auto_1fr]">
+        <div className="h-full min-h-0 p-10 grid grid-cols-1 grid-rows-[auto_minmax(0,1fr)]">
             <GenericCointainer
                 title="Todos"
                 searchValue={search}
@@ -21,7 +21,8 @@ const AulasPage = () => {
                     { label: 'Ordenar Por', onClick: () => { } },
                     { label: 'Crear', onClick: () => { } },
                 ]}
-                classNameChildren="min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
+                className="h-full min-h-0 bg-(--color-gray-primary) rounded-lg border border-black flex flex-col"
+                classNameChildren="flex-1 min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
             >
                 <AulasAdminGrid aulas={aulasQuery.data?.aulas ?? []} />
             </GenericCointainer>
