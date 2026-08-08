@@ -18,6 +18,8 @@ const AdminLayout = () => {
                 />
             </div>
 
+            //TODO: SIDEBAR ACÁ
+
             <main className="min-h-0 w-full h-full overflow-y-auto">
                 <Outlet />
             </main>
