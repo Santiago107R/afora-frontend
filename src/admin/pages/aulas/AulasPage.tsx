@@ -21,8 +21,7 @@ const AulasPage = () => {
                     { label: 'Ordenar Por', onClick: () => { } },
                     { label: 'Crear', onClick: () => { } },
                 ]}
-                className="h-full min-h-0 overflow-hidden"
-                classNameChildren="flex-1 min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
+                classNameChildren="min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
             >
                 <AulasAdminGrid aulas={aulasQuery.data?.aulas ?? []} />
             </GenericCointainer>
