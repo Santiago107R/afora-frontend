@@ -79,7 +79,7 @@ const AulaFormModal = ({ isOpen, isCreating, formValues, estados, onChange, onSu
                         </option>
                     ))}
                 </select>
-                <ChevronDown size={16} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <ChevronDown size={16} className="pointer-events-none absolute right-25 top-1/2 -translate-y-1/2 text-gray-400" />
             </div>
         </label>
     )

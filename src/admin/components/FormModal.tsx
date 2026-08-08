@@ -29,7 +29,7 @@ const FormModal = ({ isOpen, onClose, title = "crear nuevo espacio", subtitle, c
                 </button>
 
                 <div className="relative z-10 px-8 pt-8 pb-4">
-                    <h2 className="text-3xl font-semibold text-white">{title}</h2>
+                    <h2 className="text-3xl text-white">{title}</h2>
                     {subtitle && (
                         <p className="mt-1 text-sm font-medium text-gray-500">
                             {subtitle}
