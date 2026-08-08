@@ -1,3 +1,4 @@
+import { X } from "lucide-react"
 import type { FormEventHandler, ReactNode } from "react"
 
 interface Props {
@@ -24,13 +25,11 @@ const FormModal = ({ isOpen, onClose, title = "crear nuevo espacio", subtitle, c
                     className="absolute top-6 right-6 z-20 rounded-md p-1 text-gray-400 transition hover:bg-white/10 hover:text-white"
                     aria-label="Cerrar modal"
                 >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <X />
                 </button>
 
                 <div className="relative z-10 px-8 pt-8 pb-4">
-                    <h2 className="text-3xl font-bold tracking-tight text-white">{title}</h2>
+                    <h2 className="text-3xl text-white">{title}</h2>
                     {subtitle && (
                         <p className="mt-1 text-sm font-medium text-gray-500">
                             {subtitle}
