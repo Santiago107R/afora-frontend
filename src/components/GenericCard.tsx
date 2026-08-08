@@ -34,7 +34,7 @@ const GenericCard = ({
                             key={i}
                             type="button"
                             onClick={action.onClick}
-                            className="bg-(--color-primary) p-1 rounded-sm"
+                            className="bg-(--color-primary) p-1 rounded-sm cursor-pointer"
                         >
                             {action.label && (
                                 <span className="font-bold text-(--color-black-fourth)">
