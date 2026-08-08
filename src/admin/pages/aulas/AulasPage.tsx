@@ -120,7 +120,9 @@ const AulasPage = () => {
                 <FormModal isOpen={isEntitySelected} onClose={() => clearEntity()} title="Editar aula" onSubmit={handleSubmit}>
                     <div className="space-y-4">
                         <label className="block text-sm font-medium text-white">
-                            Nombre <span className="text-(--color-red-primary)">*</span>
+                            <span className="inline-flex items-center gap-1">
+                                Nombre <span className="text-(--color-red-primary)">*</span>
+                            </span>
                             <input
                                 value={formValues.name}
                                 onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
@@ -130,7 +132,9 @@ const AulasPage = () => {
                         </label>
 
                         <label className="block text-sm font-medium text-white">
-                            Descripción <span className="text-(--color-red-primary)">*</span>
+                            <span className="inline-flex items-center gap-1">
+                                Descripción <span className="text-(--color-red-primary)">*</span>
+                            </span>
                             <textarea
                                 value={formValues.description}
                                 onChange={(event) => setFormValues((current) => ({ ...current, description: event.target.value }))}
@@ -221,7 +225,7 @@ const AulasPage = () => {
                         </label>
 
                         <div className="flex justify-end gap-2 pt-2">
-                            <Button type="button" variant="outline" onClick={() => clearEntity()}>
+                            <Button type="button" variant="outline" className={'text-black'} onClick={() => clearEntity()}>
                                 Cancelar
                             </Button>
                             <Button type="submit">Guardar</Button>
