@@ -1,4 +1,5 @@
 import GenericCard from "@/components/GenericCard";
+import { cn } from "@/lib/utils";
 import { Edit } from "lucide-react";
 
 interface Props {
@@ -19,7 +20,7 @@ const AulaAdminCard = ({ name, capacity, estado, onDetalles, onEdit }: Props) =>
             ]}
         >
             <p>Capacidad: {capacity}</p>
-            <p>Estado: {estado}</p>
+            <p>Estado: <span className={cn(estado == 'Disponible' ? 'text-(--color-green-primary)' : estado == 'Ocupado' ? 'text-(--color-red-primary)' : 'text-gray-300')}>{estado}</span></p>
         </GenericCard>
     )
 }
