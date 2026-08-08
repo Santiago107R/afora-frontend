@@ -19,7 +19,7 @@ const AulaAdminCard = ({ name, capacity, estado }: Props) => {
                 </div>
 
                 <div className="bg-(--color-primary) p-1 rounded-sm">
-                    <p><Edit /></p>
+                    <p className="text-(--color-black-fourth)"><Edit /></p>
                 </div>
             </div>
         </div>
