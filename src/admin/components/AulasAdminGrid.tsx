@@ -12,7 +12,8 @@ const AulasAdminGrid = ({ aulas }: Props) => {
             items={aulas ?? []}
             keyExtractor={(aula) => aula.name}
             emptyMessage="No hay aulas cargadas"
-            className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-8 justify-items-center"
+            // className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-8"
+            className="w-full max-w-6xl mx-auto grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-4 pb-8"
             renderItem={(aula) => (
                 <AulaAdminCard
                     name={aula.name}
