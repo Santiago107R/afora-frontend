@@ -10,6 +10,7 @@ import { AdminRoute, AuthenticatedRoute, NotAuthenticatedRoute } from "./compone
 import AuthLayout from "./auth/layouts/AuthLayout"
 import { RootRedirect } from "./components/routes/RootRedirect"
 import HomeAdminPage from "./admin/pages/home/HomeAdminPage"
+import AulasPage from "./admin/pages/aulas/AulasPage"
 
 const UserLayout = lazy(() => import('./user/layouts/UserLayout'))
 const AdminLayout = lazy(() => import('./admin/layouts/AdminLayout'))
@@ -50,6 +51,10 @@ export const AppRouter = createHashRouter([
             {
                 index: true,
                 element: <HomeAdminPage />,
+            },
+            {
+                path: 'aulas',
+                element: <AulasPage />
             },
         ],
     },
