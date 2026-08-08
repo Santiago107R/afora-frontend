@@ -15,6 +15,7 @@ interface GenericContainerProps {
     onSearchChange?: (value: string) => void
     searchPlaceholder?: string
     className?: string
+    classNameChildren?: string
 }
 
 const GenericContainer = ({
@@ -25,6 +26,7 @@ const GenericContainer = ({
     onSearchChange,
     searchPlaceholder = "Buscar",
     className = "bg-(--color-gray-primary) rounded-lg border border-black",
+    classNameChildren = "p-4"
 }: GenericContainerProps) => {
     return (
         <div className={className}>
@@ -69,7 +71,7 @@ const GenericContainer = ({
                 )}
             </div>
 
-            <div className="p-4">
+            <div className={classNameChildren}>
                 {children}
             </div>
         </div>
