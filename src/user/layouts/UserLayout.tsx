@@ -4,7 +4,7 @@ import { User2 } from "lucide-react"
 import { useAuthStore } from "@/auth/store/auth.store"
 
 const UserLayout = () => {
-  const { logout } = useAuthStore()
+  const { user, logout } = useAuthStore()
 
   return (
     <div className="h-screen w-full grid grid-cols-1 grid-rows-[auto_1fr_auto]">
@@ -15,6 +15,7 @@ const UserLayout = () => {
           button={{ onClick: logout, children: "Cerrar Sesión" }}
           logo={'/favicon.svg'}
           icon={User2}
+          name={user?.name}
         />
       </div>
 
@@ -22,9 +23,9 @@ const UserLayout = () => {
         <Outlet />
       </main>
 
-      <div className="h-fit w-full">
+      {/* <div className="h-fit w-full">
         
-      </div>
+      </div> */}
 
     </div>
   )
