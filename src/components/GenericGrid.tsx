@@ -1,3 +1,4 @@
+// components/GenericGrid.tsx
 import type { ReactNode } from "react";
 
 interface GenericGridProps<T> {
@@ -13,7 +14,7 @@ function GenericGrid<T>({
     renderItem,
     keyExtractor,
     emptyMessage = "No hay elementos cargados",
-    className = "w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 pb-8 justify-items-center",
+    className = "w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-8",
 }: GenericGridProps<T>) {
 
     if (!items || items.length === 0) {
