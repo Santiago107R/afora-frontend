@@ -18,8 +18,8 @@ const AulasPage = () => {
                 searchValue={search}
                 onSearchChange={handleSearchChange}
                 actions={[
-                    { label: 'Order By', onClick: () => { } },
-                    { label: 'Add', onClick: () => { } },
+                    { label: 'Ordenar Por', onClick: () => { } },
+                    { label: 'Crear', onClick: () => { } },
                 ]}
             >
                 <AulasAdminGrid aulas={aulasQuery.data?.aulas ?? []} />

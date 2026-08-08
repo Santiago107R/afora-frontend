@@ -18,7 +18,7 @@ const GenericCard = ({
     title,
     children,
     actions,
-    className = "bg-(--color-white-primary) border border-(--color-black-primary) rounded-md p-3 space-y-3 w-md",
+    className = "bg-(--color-white-primary) border border-(--color-black-primary) rounded-md p-3 space-y-2 space-x-1",
 }: GenericCardProps) => {
     return (
         <div className={className}>
