@@ -119,7 +119,7 @@ const AulasPage = () => {
             {isEntitySelected && (
                 <FormModal isOpen={isEntitySelected} onClose={() => clearEntity()} title="Editar aula" onSubmit={handleSubmit}>
                     <div className="space-y-4">
-                        <label className="block text-sm font-medium text-white">
+                        <label className="block flex-1 text-sm font-medium text-white">
                             <span className="inline-flex items-center gap-1">
                                 Nombre <span className="text-(--color-red-primary)">*</span>
                             </span>
@@ -131,7 +131,7 @@ const AulasPage = () => {
                             />
                         </label>
 
-                        <label className="block text-sm font-medium text-white">
+                        <label className="block flex-1 text-sm font-medium text-white">
                             <span className="inline-flex items-center gap-1">
                                 Descripción <span className="text-(--color-red-primary)">*</span>
                             </span>
