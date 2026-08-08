@@ -95,20 +95,15 @@ const AulasPage = () => {
             return
         }
 
-        const payload: Partial<Aula> = {
-            ...selectedEntity,
+        const payload = {
             id: selectedEntity?.id ?? 'new',
             name: formValues.name.trim(),
             description: formValues.description.trim(),
             squareMeters: parsedSquareMeters,
             heightInMeters: parsedHeightInMeters,
             classroomType: formValues.classroomType,
-            deductTeacherSpace: null,
             capacity: parsedCapacity,
-            estado: {
-                id: estadoId,
-                name: estados?.estados?.find((estado) => estado.id === estadoId)?.name ?? '',
-            },
+            estadoId,
         }
 
         await mutation.mutateAsync(payload, {
