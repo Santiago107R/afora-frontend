@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ChevronDown } from 'lucide-react'
 import type { FormEvent } from 'react'
-import type { Aula } from '@/interfaces/aula.response'
 
 interface AulaFormValues {
     name: string
