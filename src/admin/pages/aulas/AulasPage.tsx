@@ -109,7 +109,6 @@ const AulasPage = () => {
                 id: estadoId,
                 name: estados?.estados?.find((estado) => estado.id === estadoId)?.name ?? '',
             },
-            clase: [],
         }
 
         await mutation.mutateAsync(payload, {
