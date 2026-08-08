@@ -46,7 +46,18 @@ export class apiClient {
         }
 
         if (!respuesta.ok) {
-            throw new Error(`Error en la petición: ${respuesta.status} ${respuesta.statusText}`)
+            let detalle = ''
+
+            try {
+                const texto = await respuesta.text()
+                if (texto) {
+                    detalle = ` - ${texto}`
+                }
+            } catch {
+                detalle = ''
+            }
+
+            throw new Error(`Error en la petición: ${respuesta.status} ${respuesta.statusText}${detalle}`)
         }
 
         const resultado = (await respuesta.json()) as T

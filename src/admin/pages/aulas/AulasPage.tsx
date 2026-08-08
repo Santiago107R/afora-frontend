@@ -86,20 +86,30 @@ const AulasPage = () => {
         const parsedCapacity = Number(formValues.capacity)
         const parsedSquareMeters = Number(formValues.squareMeters)
         const parsedHeightInMeters = Number(formValues.heightInMeters)
+        const estadoId = Number(formValues.estadoId)
+
+        if (!formValues.name.trim() || !formValues.description.trim() || !formValues.classroomType || !formValues.estadoId || Number.isNaN(parsedCapacity) || Number.isNaN(parsedSquareMeters) || Number.isNaN(parsedHeightInMeters)) {
+            toast.error('Completa todos los campos obligatorios', {
+                position: 'top-right'
+            })
+            return
+        }
 
         const payload: Partial<Aula> = {
             ...selectedEntity,
             id: selectedEntity?.id ?? 'new',
             name: formValues.name.trim(),
             description: formValues.description.trim(),
-            squareMeters: Number.isNaN(parsedSquareMeters) ? selectedEntity?.squareMeters ?? 0 : parsedSquareMeters,
-            heightInMeters: Number.isNaN(parsedHeightInMeters) ? selectedEntity?.heightInMeters ?? 0 : parsedHeightInMeters,
+            squareMeters: parsedSquareMeters,
+            heightInMeters: parsedHeightInMeters,
             classroomType: formValues.classroomType,
-            capacity: Number.isNaN(parsedCapacity) ? selectedEntity?.capacity ?? 0 : parsedCapacity,
+            deductTeacherSpace: null,
+            capacity: parsedCapacity,
             estado: {
-                id: Number(formValues.estadoId),
-                name: estados?.estados?.find((estado) => estado.id === Number(formValues.estadoId))?.name ?? '',
+                id: estadoId,
+                name: estados?.estados?.find((estado) => estado.id === estadoId)?.name ?? '',
             },
+            clase: [],
         }
 
         await mutation.mutateAsync(payload, {
