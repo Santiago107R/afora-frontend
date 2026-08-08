@@ -19,6 +19,13 @@ type AulaFormValues = {
     estadoId: string
 }
 
+const classroomTypeOptions = [
+    { value: 'inicial', label: 'Inicial' },
+    { value: 'primaria', label: 'Primaria' },
+    { value: 'secundaria', label: 'Secundaria' },
+    { value: 'taller', label: 'Taller' },
+]
+
 const AulasPage = () => {
     const { data: aulas, mutation } = useAulas()
     const { data: estados } = useEstados()
@@ -185,7 +192,12 @@ const AulasPage = () => {
                                     onChange={(event) => setFormValues((current) => ({ ...current, classroomType: event.target.value }))}
                                     className="w-lg appearance-none rounded-md border border-white/10 bg-white/5 px-3 py-2 pr-9 text-white outline-none transition-colors focus:border-white/30"
                                 >
-                                    <option value="0" className="bg-[#1a1a1a] text-white">Seleccionar</option>
+                                    <option value="" className="bg-[#1a1a1a] text-white">Seleccionar</option>
+                                    {classroomTypeOptions.map((option) => (
+                                        <option key={option.value} value={option.value} className="bg-[#1a1a1a] text-white">
+                                            {option.label}
+                                        </option>
+                                    ))}
                                 </select>
                                 <ChevronDown size={16} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
                             </div>
