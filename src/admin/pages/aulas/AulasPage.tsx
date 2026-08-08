@@ -103,7 +103,7 @@ const AulasPage = () => {
             heightInMeters: parsedHeightInMeters,
             classroomType: formValues.classroomType,
             capacity: parsedCapacity,
-            estadoId,
+            id_estado: estadoId,
         }
 
         await mutation.mutateAsync(payload, {
