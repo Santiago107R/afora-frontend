@@ -18,7 +18,7 @@ const GenericCard = ({
     title,
     children,
     actions,
-    className = "bg-(--color-white-primary) border border-(--color-black-primary) rounded-md p-3",
+    className = "bg-(--color-white-primary) border border-(--color-black-primary) rounded-md p-3 space-y-4",
 }: GenericCardProps) => {
     return (
         <div className={className}>
@@ -27,7 +27,7 @@ const GenericCard = ({
             {children}
 
             {actions && actions.length > 0 && (
-                <div className="flex flex-row gap-5 mt-2">
+                <div className="flex flex-row gap-5">
                     {actions.map((action, i) => (
                         <button
                             key={i}
