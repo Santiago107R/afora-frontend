@@ -199,7 +199,7 @@ const AulasPage = () => {
                                         </option>
                                     ))}
                                 </select>
-                                <ChevronDown size={16} className="pointer-events-none absolute right-20 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <ChevronDown size={16} className="pointer-events-none absolute right-25 top-1/2 -translate-y-1/2 text-gray-400" />
                             </div>
                         </label>
 
@@ -216,7 +216,7 @@ const AulasPage = () => {
                                         <option key={estado.id} value={estado.id} className="bg-[#1a1a1a] text-white">{estado.name}</option>
                                     ))}
                                 </select>
-                                <ChevronDown size={16} className="pointer-events-none absolute right-20 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <ChevronDown size={16} className="pointer-events-none absolute right-25 top-1/2 -translate-y-1/2 text-gray-400" />
                             </div>
                         </label>
 
