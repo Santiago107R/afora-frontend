@@ -14,7 +14,7 @@ const STATE_MAP: Record<string, string> = {
 
 const ListPage = () => {
   const { aulas = [] } = useAulaSocket();
-  const { selectedAula, clearSelectedAula } = useSelectedAulaStore();
+  const { selectedEntity, clearEntity } = useSelectedAulaStore();
 
   const [search, setSearch] = useState("");
   const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -37,9 +37,9 @@ const ListPage = () => {
 
 
   const currentAula = useMemo(() => {
-    if (!selectedAula) return null;
-    return aulas.find(aula => aula.name === selectedAula.name);
-  }, [aulas, selectedAula]);
+    if (!selectedEntity) return null;
+    return aulas.find(aula => aula.name === selectedEntity.name);
+  }, [aulas, selectedEntity]);
 
   return (
     <div className="h-full p-10 grid grid-cols-1 grid-rows-[auto_1fr] gap-6">
@@ -64,7 +64,7 @@ const ListPage = () => {
           capacity={currentAula.capacity}
           estado={currentAula.estado.name}
           clase={currentAula.clase}
-          onClose={clearSelectedAula}
+          onClose={clearEntity}
         />
       )}
     </div>
