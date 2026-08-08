@@ -51,7 +51,7 @@ const AulaCard = ({ shadow, name, capacity, estado }: Props) => {
 
                 </div>
 
-                <div className="flex justify-center w-md mx-auto border-b-2 border-gray-400 pb-4"></div>
+                <div className="flex justify-center w-min lg:w-md mx-auto border-b-2 border-gray-400 pb-4"></div>
 
                 <div className="flex flex-col font-anybody ml-10 mt-4">
                     <ul className="text-sm sm:text-md md:text-lg">
