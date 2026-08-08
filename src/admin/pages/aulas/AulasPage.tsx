@@ -119,27 +119,27 @@ const AulasPage = () => {
             {isEntitySelected && (
                 <FormModal isOpen={isEntitySelected} onClose={() => clearEntity()} title="Editar aula" onSubmit={handleSubmit}>
                     <div className="space-y-4">
-                        <label className="block flex-1 text-sm font-medium text-white">
-                            <span className="inline-flex items-center gap-1">
+                        <label className="block w-full text-sm font-medium text-white">
+                            <span className="mb-1 inline-flex items-center gap-1">
                                 Nombre <span className="text-(--color-red-primary)">*</span>
                             </span>
                             <input
                                 value={formValues.name}
                                 onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
-                                className="mt-1 w-lg rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30"
+                                className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30"
                                 placeholder="Ej. Aula 101"
                             />
                         </label>
 
-                        <label className="block flex-1 text-sm font-medium text-white">
-                            <span className="inline-flex items-center gap-1">
+                        <label className="block w-full text-sm font-medium text-white">
+                            <span className="mb-1 inline-flex items-center gap-1">
                                 Descripción <span className="text-(--color-red-primary)">*</span>
                             </span>
                             <textarea
                                 value={formValues.description}
                                 onChange={(event) => setFormValues((current) => ({ ...current, description: event.target.value }))}
                                 rows={3}
-                                className="mt-1 w-lg resize-none rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30"
+                                className="w-full resize-none rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30"
                                 placeholder="Ej. Aula muy espaciosa..."
                             />
                         </label>
