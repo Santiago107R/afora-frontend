@@ -99,7 +99,7 @@ const AulaFormModal = ({ isOpen, isCreating, formValues, estados, onChange, onSu
                 </button>
 
                 <div className="relative z-10 px-8 pt-8 pb-4">
-                    <h2 className="text-3xl font-bold tracking-tight text-white">{isCreating ? 'Crear aula' : 'Editar aula'}</h2>
+                    <h2 className="text-3xl text-white">{isCreating ? 'Crear aula' : 'Editar aula'}</h2>
                 </div>
 
                 <form onSubmit={onSubmit} className="relative z-10 px-8 pb-10">
