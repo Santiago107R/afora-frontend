@@ -62,6 +62,15 @@ export class apiClient {
         })
     }
 
+    public async patch<T>(url: string, params: object, headers: object = {}): Promise<T> {
+        return this.request<T>(url, {
+            method: 'PATCH',
+            headers: headers as HeadersInit,
+            body: JSON.stringify(params),
+            credentials: 'include',
+        })
+    }
+
     public async get<T>(url: string, params: Record<string, string | number | boolean> = {}, headers: object = {}): Promise<T> {
         const stringParams: Record<string, string> = {}
         Object.entries(params).forEach(([key, value]) => {

@@ -1,11 +1,55 @@
 import AulasAdminGrid from "@/admin/components/AulasAdminGrid"
+import FormModal from "@/admin/components/FormModal"
 import GenericCointainer from "@/admin/components/GenericCointainer"
 import { useAulas } from "@/admin/hook/queries"
-import { useState } from "react"
+import { useSelectedAulaStore } from "@/admin/store/selectedEntityStore"
+import { Button } from "@/components/ui/button"
+import type { Aula } from "@/user/types/aula.response"
+import { useEffect, useState, type FormEvent } from "react"
+import { toast } from "sonner"
 
 const AulasPage = () => {
-    const aulasQuery = useAulas()
+    const { data, mutation } = useAulas()
+    const { selectedEntity, isEntitySelected, setEntity, clearEntity } = useSelectedAulaStore()
     const [search, setSearch] = useState('')
+    const [formValues, setFormValues] = useState({ name: '', capacity: '' })
+
+    useEffect(() => {
+        if (selectedEntity) {
+            setFormValues({
+                name: selectedEntity.name ?? '',
+                capacity: selectedEntity.capacity?.toString() ?? '',
+            })
+        }
+    }, [selectedEntity])
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const parsedCapacity = Number(formValues.capacity)
+
+        const payload: Partial<Aula> = {
+            ...selectedEntity,
+            id: selectedEntity?.id,
+            name: formValues.name.trim(),
+            capacity: Number.isNaN(parsedCapacity) ? selectedEntity?.capacity ?? 0 : parsedCapacity,
+        }
+
+        await mutation.mutateAsync(payload, {
+            onSuccess: () => {
+                toast.success('Operación exitosa', {
+                    position: 'top-right'
+                })
+                clearEntity()
+            },
+            onError: (error) => {
+                console.error(error)
+                toast.error('Operación fallida', {
+                    position: 'top-right'
+                })
+            }
+        })
+    }
 
     const handleSearchChange = (value: string) => {
         setSearch(value)
@@ -24,8 +68,45 @@ const AulasPage = () => {
                 className="h-full min-h-0 bg-(--color-gray-primary) rounded-lg border border-black flex flex-col"
                 classNameChildren="flex-1 min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
             >
-                <AulasAdminGrid aulas={aulasQuery.data?.aulas ?? []} />
+                <AulasAdminGrid
+                    aulas={data?.aulas ?? []}
+                    onEditAula={(aula) => setEntity(aula)}
+                />
             </GenericCointainer>
+
+            {isEntitySelected && (
+                <FormModal isOpen={isEntitySelected} onClose={() => clearEntity} title="Editar aula" onSubmit={handleSubmit}>
+                    <div className="space-y-4">
+                        <label className="block text-sm font-medium text-slate-700">
+                            Nombre
+                            <input
+                                value={formValues.name}
+                                onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
+                                className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                placeholder="Ej. Aula 101"
+                            />
+                        </label>
+
+                        <label className="block text-sm font-medium text-slate-700">
+                            Capacidad
+                            <input
+                                type="number"
+                                value={formValues.capacity}
+                                onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
+                                className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                placeholder="20"
+                            />
+                        </label>
+
+                        <div className="flex justify-end gap-2 pt-2">
+                            <Button type="button" variant="outline" onClick={() => clearEntity()}>
+                                Cancelar
+                            </Button>
+                            <Button type="submit">Guardar</Button>
+                        </div>
+                    </div>
+                </FormModal>
+            )}
         </div>
     )
 }

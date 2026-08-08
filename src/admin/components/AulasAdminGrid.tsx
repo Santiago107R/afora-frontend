@@ -4,9 +4,10 @@ import AulaAdminCard from "./AulaAdminCard"
 
 interface Props {
     aulas: Aula[]
+    onEditAula?: (aula: Aula) => void
 }
 
-const AulasAdminGrid = ({ aulas }: Props) => {
+const AulasAdminGrid = ({ aulas, onEditAula }: Props) => {
     return (
         <GenericGrid
             items={aulas ?? []}
@@ -18,6 +19,7 @@ const AulasAdminGrid = ({ aulas }: Props) => {
                     name={aula.name}
                     capacity={aula.capacity}
                     estado={aula.estado.name}
+                    onEdit={() => onEditAula?.(aula)}
                 />
             )}
         />
