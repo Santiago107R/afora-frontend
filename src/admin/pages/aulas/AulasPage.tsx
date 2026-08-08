@@ -198,7 +198,7 @@ const AulasPage = () => {
                                     value={formValues.heightInMeters}
                                     onChange={(event) => setFormValues((current) => ({ ...current, heightInMeters: event.target.value }))}
                                     className="mt-1 w-full [appearance:textfield] rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                                    placeholder="20"
+                                    placeholder="5"
                                 />
                             </label>
 
@@ -212,7 +212,7 @@ const AulasPage = () => {
                                     value={formValues.capacity}
                                     onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
                                     className="mt-1 w-full [appearance:textfield] rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-white/30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                                    placeholder="20"
+                                    placeholder="6"
                                 />
                             </label>
                         </div>
