@@ -138,7 +138,7 @@ const AulasPage = () => {
                 searchValue={search}
                 onSearchChange={handleSearchChange}
                 actions={[
-                    { label: 'Ordenar Por', onClick: () => { } },
+                    // { label: 'Ordenar Por', onClick: () => { } },
                     { label: 'Crear', onClick: openCreateModal },
                 ]}
                 className="h-full min-h-0 bg-(--color-gray-primary) rounded-lg border border-black flex flex-col"
