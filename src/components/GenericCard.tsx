@@ -1,4 +1,3 @@
-// components/GenericCard.tsx
 import type { ReactNode } from "react";
 
 interface CardAction {
@@ -18,19 +17,22 @@ const GenericCard = ({
     title,
     children,
     actions,
-    className = "bg-(--color-white-primary) border border-(--color-black-primary) rounded-md p-3 space-y-2 space-x-1",
+    className = "w-full h-full flex flex-col bg-(--color-white-primary) border border-(--color-black-primary) rounded-md p-3",
 }: GenericCardProps) => {
     return (
         <div className={className}>
             {title && <h2 className="text-2xl text-center">{title}</h2>}
 
-            {children}
+            <div className="flex-1 mt-2 space-y-1">
+                {children}
+            </div>
 
             {actions && actions.length > 0 && (
-                <div className="flex flex-row gap-5">
+                <div className="flex flex-row gap-5 mt-2">
                     {actions.map((action, i) => (
                         <button
                             key={i}
+                            type="button"
                             onClick={action.onClick}
                             className="bg-(--color-primary) p-1 rounded-sm"
                         >

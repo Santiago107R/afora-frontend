@@ -1,4 +1,3 @@
-// components/GenericGrid.tsx
 import type { ReactNode } from "react";
 
 interface GenericGridProps<T> {
