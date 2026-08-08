@@ -1,5 +1,5 @@
 import { aforaApi } from "@/api/aforaApi"
-import type { AulaResponse } from "@/user/types/aula.response"
+import type { AulaResponse } from "@/interfaces/aula.response"
 
 const getAulas = async (): Promise<AulaResponse> => {
     try {

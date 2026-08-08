@@ -1,4 +1,4 @@
-import type { Aula, AulaResponse } from "@/user/types/aula.response";
+import type { Aula, AulaResponse } from "@/interfaces/aula.response";
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 

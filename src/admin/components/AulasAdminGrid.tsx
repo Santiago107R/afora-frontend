@@ -1,5 +1,5 @@
 import GenericGrid from "@/components/GenericGrid"
-import type { Aula } from "@/user/types/aula.response"
+import type { Aula } from "@/interfaces/aula.response"
 import AulaAdminCard from "./AulaAdminCard"
 
 interface Props {

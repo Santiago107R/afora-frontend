@@ -4,7 +4,7 @@ import {
     ChevronDown,
     Check
 } from "lucide-react"
-import type { Aula } from "../types/aula.response"
+import type { Aula } from "../../interfaces/aula.response"
 
 interface Props {
     placeholder?: string
@@ -37,7 +37,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
         {
             label: "Todos",
             color: "bg-indigo-500"
-        },{
+        }, {
             label: "Mantenimiento",
             color: "bg-gray-500"
         },
@@ -51,9 +51,9 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
         }
     ]
 
-    const teachers = [ ...new Set( aulas.flatMap(aula => aula.clase?.map(c => c.user.name) || [] ) ) ]
+    const teachers = [...new Set(aulas.flatMap(aula => aula.clase?.map(c => c.user.name) || []))]
 
-    const courses = [ ...new Set( aulas.flatMap(aula => aula.clase?.map(c => c.curso.name) || [] ) ) ]
+    const courses = [...new Set(aulas.flatMap(aula => aula.clase?.map(c => c.curso.name) || []))]
 
     return (
         <div>
@@ -96,7 +96,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
 
                                 </div>
 
-                                <ChevronDown className={`w-5 h-5 transition-transform ${open ? "rotate-180" : ""}`}/>
+                                <ChevronDown className={`w-5 h-5 transition-transform ${open ? "rotate-180" : ""}`} />
 
                             </button>
 
@@ -130,7 +130,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
 
                         </div>
 
-                        
+
 
                         <div className="relative w-full ">
 
@@ -152,7 +152,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
                                     {courses.map((course) => (
                                         <button
                                             key={course}
-                                            onClick={() => { setSelectedCourse( selectedCourse === course ? null : course), setOpenCourses(false) }}
+                                            onClick={() => { setSelectedCourse(selectedCourse === course ? null : course), setOpenCourses(false) }}
                                             className="w-full flex items-center justify-between px-4 py-3 hover:bg-[#cfcfcf] transition-all"
                                         >
 
@@ -200,7 +200,7 @@ function AulaFilters({ placeholder, icon: Icon, aulas, search, setSearch, select
                                     {teachers.map((teacher) => (
                                         <button
                                             key={teacher}
-                                            onClick={() => { setSelectedTeacher( selectedTeacher === teacher ? null : teacher), setOpenTeachers(false) }}
+                                            onClick={() => { setSelectedTeacher(selectedTeacher === teacher ? null : teacher), setOpenTeachers(false) }}
                                             className="w-full flex items-center justify-between px-4 py-3 hover:bg-[#cfcfcf] transition-all"
                                         >
 

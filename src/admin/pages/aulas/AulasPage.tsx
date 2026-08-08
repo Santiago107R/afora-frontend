@@ -1,15 +1,17 @@
 import AulasAdminGrid from "@/admin/components/AulasAdminGrid"
 import FormModal from "@/admin/components/FormModal"
 import GenericCointainer from "@/admin/components/GenericCointainer"
-import { useAulas } from "@/admin/hook/queries"
+import { useAulas, useEstados } from "@/admin/hook/queries"
 import { useSelectedAulaStore } from "@/admin/store/selectedEntityStore"
 import { Button } from "@/components/ui/button"
-import type { Aula } from "@/user/types/aula.response"
+import type { Aula } from "@/interfaces/aula.response"
+import { CircleAlert } from "lucide-react"
 import { useEffect, useState, type FormEvent } from "react"
 import { toast } from "sonner"
 
 const AulasPage = () => {
-    const { data, mutation } = useAulas()
+    const { data: aulas, mutation } = useAulas()
+    const { data: estados } = useEstados()
     const { selectedEntity, isEntitySelected, setEntity, clearEntity } = useSelectedAulaStore()
     const [search, setSearch] = useState('')
     const [formValues, setFormValues] = useState({ name: '', capacity: '' })
@@ -69,7 +71,7 @@ const AulasPage = () => {
                 classNameChildren="flex-1 min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
             >
                 <AulasAdminGrid
-                    aulas={data?.aulas ?? []}
+                    aulas={aulas?.aulas ?? []}
                     onEditAula={(aula) => setEntity(aula)}
                 />
             </GenericCointainer>
@@ -77,25 +79,85 @@ const AulasPage = () => {
             {isEntitySelected && (
                 <FormModal isOpen={isEntitySelected} onClose={() => clearEntity} title="Editar aula" onSubmit={handleSubmit}>
                     <div className="space-y-4">
-                        <label className="block text-sm font-medium text-slate-700">
-                            Nombre
+                        <label className="block text-sm font-medium text-white">
+                            Nombre <span className="text-(--color-red-primary)">*</span>
                             <input
                                 value={formValues.name}
                                 onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
-                                className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                className="mt-1 w-lg rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
                                 placeholder="Ej. Aula 101"
                             />
                         </label>
 
-                        <label className="block text-sm font-medium text-slate-700">
-                            Capacidad
+                        <label className="block text-sm font-medium text-white">
+                            Descripción <span className="text-(--color-red-primary)">*</span>
                             <input
-                                type="number"
-                                value={formValues.capacity}
-                                onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
-                                className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
-                                placeholder="20"
+                                value={formValues.name}
+                                onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
+                                className="mt-1 w-lg rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                placeholder="Ej. Aula 101"
                             />
+                        </label>
+
+                        <div className="flex flex-row gap-4">
+
+                            <label className="block text-sm font-medium text-white">
+                                M² <span className="text-(--color-red-primary)">*</span> <CircleAlert />
+                                <input
+                                    type="number"
+                                    value={formValues.capacity}
+                                    onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
+                                    className="mt-1 rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                    placeholder="20"
+                                />
+                            </label>
+
+                            <label className="block text-sm font-medium text-white">
+                                M² descontados <span className="text-(--color-red-primary)">*</span> <CircleAlert />
+                                <input
+                                    type="number"
+                                    value={formValues.capacity}
+                                    onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
+                                    className="mt-1 rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                    placeholder="20"
+                                />
+                            </label>
+
+                            <label className="block text-sm font-medium text-white">
+                                Metros de altura <span className="text-(--color-red-primary)">*</span> <CircleAlert />
+                                <input
+                                    type="number"
+                                    value={formValues.capacity}
+                                    onChange={(event) => setFormValues((current) => ({ ...current, capacity: event.target.value }))}
+                                    className="mt-1 rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                                    placeholder="20"
+                                />
+                            </label>
+                        </div>
+
+                        <label className="block text-sm font-medium text-white">
+                            Tipo de aula <span className="text-(--color-red-primary)">*</span>
+                            <select
+                                value={formValues.name}
+                                onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
+                                className="mt-1 w-lg rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                            >
+                                <option value="0">Seleccionar</option>
+                            </select>
+                        </label>
+
+                        <label className="block text-sm font-medium text-white">
+                            Estado <span className="text-(--color-red-primary)">*</span>
+                            <select
+                                value={formValues.name}
+                                onChange={(event) => setFormValues((current) => ({ ...current, name: event.target.value }))}
+                                className="mt-1 w-lg rounded-md border border-slate-300 bg-white px-3 py-2 outline-none focus:border-primary"
+                            >
+                                <option value="0">Seleccionar</option>
+                                {(estados?.estados ?? []).map((estado) => (
+                                    <option key={estado.id} value={estado.id}>{estado.name}</option>
+                                ))}
+                            </select>
                         </label>
 
                         <div className="flex justify-end gap-2 pt-2">

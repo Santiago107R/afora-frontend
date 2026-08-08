@@ -1,4 +1,4 @@
-import type { ClaseResponse } from "../types/clase.response";
+import type { ClaseResponse } from "../../interfaces/clase.response";
 
 interface Props {
     name: string;

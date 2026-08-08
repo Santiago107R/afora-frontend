@@ -1,4 +1,4 @@
-import type { Aula } from '@/user/types/aula.response'
+import type { Aula } from '@/interfaces/aula.response'
 import { create } from 'zustand'
 
 export type SelectedEntityStore<T> = {

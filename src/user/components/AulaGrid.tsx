@@ -1,6 +1,6 @@
 // components/AulaGrid.tsx
 import GenericGrid from "@/components/GenericGrid";
-import type { Aula } from "../types/aula.response"
+import type { Aula } from "../../interfaces/aula.response"
 import AulaCard from "./AulaCard";
 
 interface Props {

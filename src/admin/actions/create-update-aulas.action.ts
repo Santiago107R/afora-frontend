@@ -1,5 +1,5 @@
 import { aforaApi } from "@/api/aforaApi";
-import type { Aula } from "@/user/types/aula.response";
+import type { Aula } from "@/interfaces/aula.response";
 
 export const createUpdateAula = async (aulaLike: Partial<Aula>): Promise<Aula> => {
     const { id, ...rest } = aulaLike

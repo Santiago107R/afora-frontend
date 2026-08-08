@@ -1,4 +1,4 @@
-import type { User } from "@/user/types/clase.response"
+import type { User } from "@/interfaces/clase.response"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 import { loginAction } from "../actions/login.action"

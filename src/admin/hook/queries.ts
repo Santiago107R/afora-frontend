@@ -1,7 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import getAulas from "../actions/get-aulas.action"
 import { createUpdateAula } from "../actions/create-update-aulas.action"
-import type { Aula } from "@/user/types/aula.response"
+import type { Aula } from "@/interfaces/aula.response"
+import getEstados from "../actions/get-estados.action"
 
 
 export const useAulas = () => {
@@ -20,14 +21,18 @@ export const useAulas = () => {
     return { ...query, mutation }
 }
 
-// export const mutationAula = () => {
+export const useEstados = () => {
+    const queryClient = useQueryClient()
+    const query = useQuery({ queryKey: ['estados'], queryFn: getEstados })
 
-//     return useMutation({
-//         mutationFn: createUpdateAula,
-//         onSuccess: (aula: Aula) => {
-//             queryClient.invalidateQueries({ queryKey: ['aulas'] })
+    const mutation = useMutation({
+        mutationFn: createUpdateAula,
+        onSuccess: (aula: Aula) => {
+            queryClient.invalidateQueries({ queryKey: ['estados'] })
 
-//             queryClient.setQueryData(['aulas'], aula)
-//         }
-//     })
-// }
+            queryClient.setQueryData(['estados'], aula)
+        }
+    })
+
+    return { ...query, mutation }
+}
