@@ -20,7 +20,7 @@ const AulaAdminCard = ({ name, capacity, estado, onDetalles, onEdit }: Props) =>
             ]}
         >
             <p>Capacidad: {capacity}</p>
-            <p>Estado: <span className={cn(estado == 'Disponible' ? 'text-(--color-green-secondary)' : estado == 'Ocupado' ? 'text-(--color-red-primary)' : 'text-gray-300')}>{estado}</span></p>
+            <p>Estado: <span className={cn(estado == 'Disponible' ? 'text-(--color-green-secondary)' : estado == 'Ocupado' ? 'text-(--color-red-primary)' : 'text-gray-500')}>{estado}</span></p>
         </GenericCard>
     )
 }
