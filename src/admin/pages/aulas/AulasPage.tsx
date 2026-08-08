@@ -31,6 +31,7 @@ const AulasPage = () => {
     const { data: estados } = useEstados()
     const { selectedEntity, isEntitySelected, setEntity, clearEntity } = useSelectedAulaStore()
     const [search, setSearch] = useState('')
+    const [isCreating, setIsCreating] = useState(false)
     const [formValues, setFormValues] = useState<AulaFormValues>({
         name: '',
         description: '',
@@ -55,6 +56,30 @@ const AulasPage = () => {
         }
     }, [selectedEntity])
 
+    const resetForm = () => {
+        setFormValues({
+            name: '',
+            description: '',
+            squareMeters: '',
+            heightInMeters: '',
+            classroomType: '',
+            capacity: '',
+            estadoId: '',
+        })
+        setIsCreating(false)
+    }
+
+    const openCreateModal = () => {
+        resetForm()
+        setIsCreating(true)
+        setEntity({ id: 'new' } as Partial<Aula>)
+    }
+
+    const openEditModal = (aula: Partial<Aula>) => {
+        setIsCreating(false)
+        setEntity(aula)
+    }
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
@@ -64,16 +89,16 @@ const AulasPage = () => {
 
         const payload: Partial<Aula> = {
             ...selectedEntity,
-            id: selectedEntity?.id,
+            id: selectedEntity?.id ?? 'new',
             name: formValues.name.trim(),
             description: formValues.description.trim(),
             squareMeters: Number.isNaN(parsedSquareMeters) ? selectedEntity?.squareMeters ?? 0 : parsedSquareMeters,
             heightInMeters: Number.isNaN(parsedHeightInMeters) ? selectedEntity?.heightInMeters ?? 0 : parsedHeightInMeters,
             classroomType: formValues.classroomType,
             capacity: Number.isNaN(parsedCapacity) ? selectedEntity?.capacity ?? 0 : parsedCapacity,
-            estado: selectedEntity?.estado ?? {
+            estado: {
                 id: Number(formValues.estadoId),
-                name: '',
+                name: estados?.estados?.find((estado) => estado.id === Number(formValues.estadoId))?.name ?? '',
             },
         }
 
@@ -105,19 +130,19 @@ const AulasPage = () => {
                 onSearchChange={handleSearchChange}
                 actions={[
                     { label: 'Ordenar Por', onClick: () => { } },
-                    { label: 'Crear', onClick: () => { } },
+                    { label: 'Crear', onClick: openCreateModal },
                 ]}
                 className="h-full min-h-0 bg-(--color-gray-primary) rounded-lg border border-black flex flex-col"
                 classNameChildren="flex-1 min-h-0 w-full overflow-y-auto border border-neutral-100 rounded-xl p-4"
             >
                 <AulasAdminGrid
                     aulas={aulas?.aulas ?? []}
-                    onEditAula={(aula) => setEntity(aula)}
+                    onEditAula={(aula) => openEditModal(aula)}
                 />
             </GenericCointainer>
 
             {isEntitySelected && (
-                <FormModal isOpen={isEntitySelected} onClose={() => clearEntity()} title="Editar aula" onSubmit={handleSubmit}>
+                <FormModal isOpen={isEntitySelected} onClose={() => { clearEntity(); resetForm() }} title={isCreating ? 'Crear aula' : 'Editar aula'} onSubmit={handleSubmit}>
                     <div className="space-y-4">
                         <label className="block w-full text-sm font-medium text-white">
                             <span className="mb-1 inline-flex items-center gap-1">
