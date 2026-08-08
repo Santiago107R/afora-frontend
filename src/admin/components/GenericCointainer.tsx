@@ -1,4 +1,3 @@
-// components/GenericContainer.tsx
 import type { ReactNode } from "react"
 
 interface ActionItem {
@@ -53,7 +52,7 @@ const GenericContainer = ({
                                 key={i}
                                 type="button"
                                 onClick={action.onClick}
-                                className="bg-(--color-primary) px-3 py-1 rounded-sm flex items-center gap-1"
+                                className="bg-(--color-primary) px-3 py-1 rounded-sm cursor-pointer flex items-center gap-1"
                             >
                                 {action.label && (
                                     <span className="font-bold text-(--color-black-fourth)">
