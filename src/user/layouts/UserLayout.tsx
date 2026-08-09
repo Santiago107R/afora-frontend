@@ -11,7 +11,7 @@ const UserLayout = () => {
 
       <div className="h-fit w-full">
         <CustomHeader
-          link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/user/lista' }]}
+          // link={[{ name: "Inicio", url: '/' }, { name: "Lista", url: '/user/lista' }]}
           button={{ onClick: logout, children: "Cerrar Sesión" }}
           logo={'/logo_negro.png'}
           icon={User2}

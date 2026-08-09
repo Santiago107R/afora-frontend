@@ -31,12 +31,12 @@ export const AppRouter = createHashRouter([
         children: [
             {
                 index: true,
-                element: <HomePage />,
-            },
-            {
-                path: 'lista',
                 element: <ListPage />,
+                // element: <HomePage />,
             },
+            // {
+            // path: 'lista',
+            // },
         ],
     },
 
