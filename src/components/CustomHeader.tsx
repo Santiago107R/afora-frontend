@@ -51,7 +51,7 @@ const CustomHeader = ({ link, icon: Icon, button = undefined, name, logo }: Prop
         </div>
       </div>
 
-      {
+      {/* {
         link && (
           <nav className="sticky top-0 z-50 flex justify-center py-2 ">
             <div className="flex items-center  bg-black rounded-full pr-8 pl-2 py-2 gap-20 ">
@@ -69,7 +69,7 @@ const CustomHeader = ({ link, icon: Icon, button = undefined, name, logo }: Prop
             </div>
           </nav>
         )
-      }
+      } */}
     </>
   )
 }
