@@ -1,9 +1,9 @@
-import type { User } from "@/interfaces/clase.response"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 import { loginAction } from "../actions/login.action"
 import { checkAuthAction } from "../actions/check-auth.action"
 import { logoutAction } from "../actions/logout.action"
+import type { User } from "@/interfaces/user.response"
 
 type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking'
 
