@@ -1,7 +1,6 @@
 import { createHashRouter, Navigate } from "react-router"
 import { lazy } from "react"
 
-import HomePage from './user/pages/home/HomePage'
 import ListPage from "@/user/pages/list/ListPage"
 import LoginPage from "./auth/pages/login/LoginPage"
 import RegisterPage from "./auth/pages/register/RegisterPage"
