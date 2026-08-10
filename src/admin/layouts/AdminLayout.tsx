@@ -11,19 +11,21 @@ const AdminLayout = () => {
 
             <div className="h-fit w-full shrink-0">
                 <CustomHeader
-                    button={{ onClick: logout, children: "Cerrar Sesión" }}
+                    button={{
+                        onClick: logout,
+                        children: "Cerrar Sesión"
+                    }}
                     logo="/logo_negro.png"
                     icon={User2}
                     name={user?.name}
                 />
             </div>
 
-            
             <div className="flex flex-1 min-h-0">
 
                 <Sidebar />
 
-                <main className="flex-1 min-w-0 overflow-y-auto">
+                <main className="flex-1 min-w-0 min-h-0 overflow-y-auto">
                     <Outlet />
                 </main>
 
