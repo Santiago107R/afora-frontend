@@ -74,14 +74,9 @@ const UsersPage = () => {
                 onSearchChange={setSearch}
                 searchPlaceholder="Buscar"
                 actions={[
+                
                     {
-                        label: "Order by",
-                        onClick: () => {
-                            console.log("Ordenar usuarios")
-                        },
-                    },
-                    {
-                        label: "Add",
+                        label: "Crear",
                         onClick: () => {
                             console.log("Crear usuario")
                         },
