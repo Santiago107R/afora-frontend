@@ -10,17 +10,16 @@ import { NavLink } from "react-router"
 
 const Sidebar = () => {
     return (
-        <aside className="w-[173px] h-full bg-[#eeeeee] border-r border-gray-300 shrink-0">
+        <aside className="w-[173px] shrink-0 h-full bg-[#eeeeee] border-r border-gray-300">
             <nav className="flex flex-col gap-3 p-3">
 
                 {/* USUARIOS */}
                 <NavLink
                     to="/admin/usuarios"
                     className={({ isActive }) =>
-                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${
-                            isActive
-                                ? "bg-[#d9d9d9]"
-                                : "hover:bg-[#d9d9d9]"
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
+                            ? "bg-[#d9d9d9]"
+                            : "hover:bg-[#d9d9d9]"
                         }`
                     }
                 >
@@ -37,10 +36,9 @@ const Sidebar = () => {
                 <NavLink
                     to="/admin/aulas"
                     className={({ isActive }) =>
-                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${
-                            isActive
-                                ? "bg-[#d9d9d9]"
-                                : "hover:bg-[#d9d9d9]"
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
+                            ? "bg-[#d9d9d9]"
+                            : "hover:bg-[#d9d9d9]"
                         }`
                     }
                 >

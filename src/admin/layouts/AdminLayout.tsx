@@ -1,7 +1,9 @@
 import { Outlet } from "react-router"
 import CustomHeader from "../../components/CustomHeader"
-import { Sidebar, User2 } from "lucide-react"
+import { User2 } from "lucide-react"
 import { useAuthStore } from "@/auth/store/auth.store"
+import Sidebar from "../components/SideBar"
+
 
 const AdminLayout = () => {
     const { user, logout } = useAuthStore()
@@ -9,7 +11,8 @@ const AdminLayout = () => {
     return (
         <div className="h-screen w-full flex flex-col">
 
-            <div className="h-fit w-full shrink-0">
+            {/* HEADER */}
+            <div className="shrink-0">
                 <CustomHeader
                     button={{
                         onClick: logout,
@@ -21,6 +24,7 @@ const AdminLayout = () => {
                 />
             </div>
 
+            {/* SIDEBAR + CONTENIDO */}
             <div className="flex flex-1 min-h-0">
 
                 <Sidebar />
