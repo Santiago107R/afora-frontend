@@ -61,15 +61,9 @@ const UsuariosAdmin = () => {
                 searchPlaceholder="Buscar"
                 actions={[
                     {
-                        label: "Order by",
+                        label: "crear",
                         onClick: () => {
-                            console.log("Ordenar")
-                        },
-                    },
-                    {
-                        label: "Add",
-                        onClick: () => {
-                            console.log("Agregar usuario")
+                            console.log(".")
                         },
                     },
                 ]}
