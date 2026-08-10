@@ -1,32 +1,43 @@
 import { Outlet } from "react-router"
 import CustomHeader from "../../components/CustomHeader"
-import { Sidebar, User2 } from "lucide-react"
+import { User2 } from "lucide-react"
 import { useAuthStore } from "@/auth/store/auth.store"
+import Sidebar from "../components/SideBar"
+
 
 const AdminLayout = () => {
     const { user, logout } = useAuthStore()
 
     return (
-        <div className="h-screen w-full grid grid-cols-1 grid-rows-[auto_1fr_auto]">
+        <div className="h-screen w-full flex flex-col">
 
-            <div className="h-fit w-full">
+            {/* HEADER */}
+            <div className="h-fit w-full shrink-0">
                 <CustomHeader
-                    button={{ onClick: logout, children: "Cerrar Sesión" }}
-                    logo={'/logo_negro.png'}
+                    button={{
+                        onClick: logout,
+                        children: "Cerrar Sesión"
+                    }}
+                    logo="/logo_negro.png"
                     icon={User2}
                     name={user?.name}
                 />
             </div>
 
             {/* //TODO: SIDEBAR ACÁ */}
+            <div className="flex flex-1 min-h-0">
 
-            <Sidebar />
+                <Sidebar />
 
-            <main className="min-h-0 w-full h-full overflow-y-auto">
-                <Outlet />
-            </main>
+                <main className="flex-1 min-w-0 min-h-0 overflow-y-auto">
+                    <Outlet />
+                </main>
+
+            </div>
+
         </div>
     )
 }
 
 export default AdminLayout
+
