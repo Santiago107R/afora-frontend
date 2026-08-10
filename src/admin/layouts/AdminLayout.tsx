@@ -1,6 +1,6 @@
 import { Outlet } from "react-router"
 import CustomHeader from "../../components/CustomHeader"
-import { User2 } from "lucide-react"
+import { Sidebar, User2 } from "lucide-react"
 import { useAuthStore } from "@/auth/store/auth.store"
 
 const AdminLayout = () => {
@@ -19,6 +19,8 @@ const AdminLayout = () => {
             </div>
 
             {/* //TODO: SIDEBAR ACÁ */}
+
+            <Sidebar />
 
             <main className="min-h-0 w-full h-full overflow-y-auto">
                 <Outlet />
