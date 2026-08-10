@@ -9,62 +9,63 @@ import {
 
 const Sidebar = () => {
     return (
-        <aside className="w-[245px] h-full bg-[#eeeeee] border border-gray-300 rounded-r-lg p-2 shrink-0">
-            <nav className="flex flex-col gap-3">
+        <aside className="w-[173px] h-full bg-[#eeeeee] border-r border-gray-300">
 
-                <button className="w-full h-[55px] flex items-center gap-6 rounded-lg px-2 bg-[#d9d9d9]">
-                    <span className="w-[36px] h-[36px] bg-black rounded-md flex items-center justify-center">
-                        <UserPlus size={22} className="text-white" />
+            <nav className="flex flex-col gap-3 p-3">
+
+                <button className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg bg-[#d9d9d9]">
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <UserPlus size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[18px] font-bold text-black">
+                    <span className="text-[14px] font-bold whitespace-nowrap">
                         Crear usuarios
                     </span>
                 </button>
 
-                <button className="w-full h-[55px] flex items-center gap-6 rounded-lg px-2 hover:bg-[#d9d9d9]">
-                    <span className="w-[36px] h-[36px] bg-black rounded-md flex items-center justify-center">
-                        <Bell size={22} className="text-white" />
+                <button className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]">
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <Bell size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[18px] font-bold text-black">
+                    <span className="text-[14px] font-bold whitespace-nowrap">
                         Crear aulas
                     </span>
                 </button>
 
-                <button className="w-full h-[55px] flex items-center gap-6 rounded-lg px-2 hover:bg-[#d9d9d9]">
-                    <span className="w-[36px] h-[36px] bg-black rounded-md flex items-center justify-center">
-                        <School size={22} className="text-white" />
+                <button className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]">
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <School size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[18px] font-bold text-black">
+                    <span className="text-[14px] font-bold whitespace-nowrap">
                         Materias
                     </span>
                 </button>
 
-                <button className="w-full h-[55px] flex items-center gap-6 rounded-lg px-2 hover:bg-[#d9d9d9]">
-                    <span className="w-[36px] h-[36px] bg-black rounded-md flex items-center justify-center">
-                        <GraduationCap size={22} className="text-white" />
+                <button className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]">
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <GraduationCap size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[18px] font-bold text-black">
+                    <span className="text-[14px] font-bold whitespace-nowrap">
                         Cursos
                     </span>
                 </button>
 
-                <button className="w-full h-[55px] flex items-center gap-6 rounded-lg px-2 hover:bg-[#d9d9d9]">
-                    <span className="w-[36px] h-[36px] bg-black rounded-md flex items-center justify-center">
-                        <BookOpen size={22} className="text-white" />
+                <button className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]">
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <BookOpen size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[18px] font-bold text-black">
+                    <span className="text-[14px] font-bold whitespace-nowrap">
                         Clases excepción
                     </span>
                 </button>
 
-                <button className="w-full h-[55px] flex items-center gap-6 rounded-lg px-2 hover:bg-[#d9d9d9]">
-                    <span className="w-[36px] h-[36px] bg-black rounded-md flex items-center justify-center">
-                        <BriefcaseBusiness size={22} className="text-white" />
+                <button className="w-full h-[55px] flex items-center px-2 rounded-lg hover:bg-[#d9d9d9]">
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <BriefcaseBusiness size={16} className="text-white" />
                     </span>
                 </button>
 
