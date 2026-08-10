@@ -11,7 +11,7 @@ const AdminLayout = () => {
     return (
         <div className="h-screen w-full flex flex-col">
 
-            {/* HEADER */}
+            
             <div className="shrink-0">
                 <CustomHeader
                     button={{
@@ -24,7 +24,6 @@ const AdminLayout = () => {
                 />
             </div>
 
-            {/* SIDEBAR + CONTENIDO */}
             <div className="flex flex-1 min-h-0">
 
                 <Sidebar />

@@ -10,10 +10,10 @@ import { NavLink } from "react-router"
 
 const Sidebar = () => {
     return (
-        <aside className="w-[173px] shrink-0 h-full bg-[#eeeeee] border-r border-gray-300">
+        <aside className="w-[220px] shrink-0 h-full bg-[#eeeeee] border-r border-gray-300">
             <nav className="flex flex-col gap-3 p-3">
 
-                {/* USUARIOS */}
+                
                 <NavLink
                     to="/admin/usuarios"
                     className={({ isActive }) =>
@@ -32,7 +32,7 @@ const Sidebar = () => {
                     </span>
                 </NavLink>
 
-                {/* AULAS */}
+                
                 <NavLink
                     to="/admin/aulas"
                     className={({ isActive }) =>
@@ -51,7 +51,7 @@ const Sidebar = () => {
                     </span>
                 </NavLink>
 
-                {/* MATERIAS */}
+                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
@@ -65,7 +65,7 @@ const Sidebar = () => {
                     </span>
                 </button>
 
-                {/* CURSOS */}
+                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
@@ -79,7 +79,7 @@ const Sidebar = () => {
                     </span>
                 </button>
 
-                {/* CLASES EXCEPCIÓN */}
+                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
@@ -93,7 +93,7 @@ const Sidebar = () => {
                     </span>
                 </button>
 
-                {/* OTRO */}
+                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center px-2 rounded-lg hover:bg-[#d9d9d9]"
