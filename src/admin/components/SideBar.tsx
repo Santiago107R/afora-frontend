@@ -16,7 +16,6 @@ const Sidebar = () => {
     return (
         <aside className="w-[250px] h-full flex flex-col p-3">
 
-            {/* Navegación */}
             <nav className="flex flex-col gap-3">
 
                 <NavLink
@@ -107,7 +106,6 @@ const Sidebar = () => {
 
             </nav>
 
-            {/* Cerrar sesión */}
             <button
                 type="button"
                 onClick={logout}
