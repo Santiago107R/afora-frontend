@@ -113,7 +113,8 @@ const Sidebar = () => {
                 onClick={logout}
                 className="mt-auto w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
             >
-                <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                <span className="w-[26pxgit status
+                ] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
                     <LogOut size={16} className="text-white" />
                 </span>
 
