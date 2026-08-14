@@ -5,21 +5,27 @@ import {
     GraduationCap,
     BookOpen,
     BriefcaseBusiness,
+    LogOut,
 } from "lucide-react"
 import { NavLink } from "react-router"
+import { useAuthStore } from "@/auth/store/auth.store"
 
 const Sidebar = () => {
-    return (
-        <aside className="w-[220px] shrink-0 h-full bg-[#eeeeee] border-r border-gray-300">
-            <nav className="flex flex-col gap-3 p-3">
+    const { logout } = useAuthStore()
 
-                
+    return (
+        <aside className="w-[250px] h-full flex flex-col p-3">
+
+            {/* Navegación */}
+            <nav className="flex flex-col gap-3">
+
                 <NavLink
                     to="/admin/usuarios"
                     className={({ isActive }) =>
-                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
-                            ? "bg-[#d9d9d9]"
-                            : "hover:bg-[#d9d9d9]"
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${
+                            isActive
+                                ? "bg-[#d9d9d9]"
+                                : "hover:bg-[#d9d9d9]"
                         }`
                     }
                 >
@@ -32,13 +38,13 @@ const Sidebar = () => {
                     </span>
                 </NavLink>
 
-                
                 <NavLink
                     to="/admin/aulas"
                     className={({ isActive }) =>
-                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
-                            ? "bg-[#d9d9d9]"
-                            : "hover:bg-[#d9d9d9]"
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${
+                            isActive
+                                ? "bg-[#d9d9d9]"
+                                : "hover:bg-[#d9d9d9]"
                         }`
                     }
                 >
@@ -51,7 +57,6 @@ const Sidebar = () => {
                     </span>
                 </NavLink>
 
-                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
@@ -65,7 +70,6 @@ const Sidebar = () => {
                     </span>
                 </button>
 
-                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
@@ -79,7 +83,6 @@ const Sidebar = () => {
                     </span>
                 </button>
 
-                
                 <button
                     type="button"
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
@@ -93,10 +96,9 @@ const Sidebar = () => {
                     </span>
                 </button>
 
-                
                 <button
                     type="button"
-                    className="w-full h-[55px] flex items-center px-2 rounded-lg hover:bg-[#d9d9d9]"
+                    className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
                         <BriefcaseBusiness size={16} className="text-white" />
@@ -104,6 +106,22 @@ const Sidebar = () => {
                 </button>
 
             </nav>
+
+            {/* Cerrar sesión */}
+            <button
+                type="button"
+                onClick={logout}
+                className="mt-auto w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
+            >
+                <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                    <LogOut size={16} className="text-white" />
+                </span>
+
+                <span className="text-[14px] font-bold whitespace-nowrap">
+                    Cerrar sesión
+                </span>
+            </button>
+
         </aside>
     )
 }
