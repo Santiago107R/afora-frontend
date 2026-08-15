@@ -37,7 +37,7 @@ const UsuariosTable = ({ usuarios, onEdit }: Props) => {
                         </th>
 
                         <th className="text-left py-2 px-2">
-                            
+                            Contacto
                         </th>
 
                         <th className="w-20"></th>
