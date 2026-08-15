@@ -2,7 +2,7 @@ import { Outlet } from "react-router"
 import CustomHeader from "../../components/CustomHeader"
 import { User2 } from "lucide-react"
 import { useAuthStore } from "@/auth/store/auth.store"
-import Sidebar from "../components/Sidebar"
+import Sidebar from "../components/SideBar"
 
 const AdminLayout = () => {
     const { user } = useAuthStore()
