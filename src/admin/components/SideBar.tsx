@@ -124,5 +124,5 @@ const Sidebar = () => {
         </aside>
     )
 }
-
+console.log("ESTE COMPONENTE SE ESTA EJECUTANDO")
 export default Sidebar
