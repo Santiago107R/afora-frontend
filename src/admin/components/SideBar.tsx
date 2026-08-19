@@ -91,7 +91,7 @@ const Sidebar = () => {
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
-                        Clases excepción
+                        Clases 
                     </span>
                 </button>
 
@@ -101,6 +101,10 @@ const Sidebar = () => {
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
                         <BriefcaseBusiness size={16} className="text-white" />
+                    </span>
+
+                    <span className="text-[14px] font-bold whitespace-nowrap">
+                        Clases excepción
                     </span>
                 </button>
 
