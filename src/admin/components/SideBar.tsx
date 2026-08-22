@@ -115,7 +115,7 @@ const Sidebar = () => {
             >
                 <span className="w-[26pxgit status
                 ] h-[26px] shrink-0 rounded-md flex items-center justify-center">
-                    <LogOut size={16} className="text-white" />
+                    <LogOut size={16} className="text-black" />
                 </span>
 
                 <span className="text-[14px] font-bold whitespace-nowrap">
