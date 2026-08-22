@@ -21,10 +21,9 @@ const Sidebar = () => {
                 <NavLink
                     to="/admin/usuarios"
                     className={({ isActive }) =>
-                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${
-                            isActive
-                                ? "bg-[#d9d9d9]"
-                                : "hover:bg-[#d9d9d9]"
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
+                            ? "bg-[#d9d9d9]"
+                            : "hover:bg-[#d9d9d9]"
                         }`
                     }
                 >
@@ -33,17 +32,16 @@ const Sidebar = () => {
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
-                        Crear usuarios
+                        Personal
                     </span>
                 </NavLink>
 
                 <NavLink
                     to="/admin/aulas"
                     className={({ isActive }) =>
-                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${
-                            isActive
-                                ? "bg-[#d9d9d9]"
-                                : "hover:bg-[#d9d9d9]"
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
+                            ? "bg-[#d9d9d9]"
+                            : "hover:bg-[#d9d9d9]"
                         }`
                     }
                 >
@@ -52,7 +50,7 @@ const Sidebar = () => {
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
-                        Crear aulas
+                        Aulas
                     </span>
                 </NavLink>
 
@@ -91,7 +89,7 @@ const Sidebar = () => {
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
-                        Clases 
+                        Clases
                     </span>
                 </button>
 
@@ -104,7 +102,7 @@ const Sidebar = () => {
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
-                        Clases excepción
+                        Excepciones
                     </span>
                 </button>
 
@@ -113,10 +111,10 @@ const Sidebar = () => {
             <button
                 type="button"
                 onClick={logout}
-                className="mt-auto w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
+                className="mt-auto w-full h-[55px] flex items-center gap-4 px-2 rounded-lg bg-red-500/15 hover:bg-red-500/25"
             >
                 <span className="w-[26pxgit status
-                ] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                ] h-[26px] shrink-0 rounded-md flex items-center justify-center">
                     <LogOut size={16} className="text-white" />
                 </span>
 
@@ -128,5 +126,5 @@ const Sidebar = () => {
         </aside>
     )
 }
-console.log("ESTE COMPONENTE SE ESTA EJECUTANDO")
+// console.log("ESTE COMPONENTE SE ESTA EJECUTANDO")
 export default Sidebar
