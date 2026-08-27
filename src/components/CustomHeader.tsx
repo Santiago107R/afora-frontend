@@ -3,6 +3,7 @@ import type { ButtonProps } from "@base-ui/react"
 import type { LucideIcon } from "lucide-react"
 import { Link } from "react-router"
 import { Button } from "./ui/button"
+import { cn } from "@/lib/utils"
 
 
 interface Props {
@@ -20,7 +21,7 @@ const CustomHeader = ({ link, icon: Icon, button = undefined, name, logo }: Prop
   return (
     <>
       <div className="bg-(--color-primary)  flex items-center justify-between ">
-        <img src={logo} alt="logo" className="w-15 h-15 sm:w-20 sm:h-20 md:w-25 md:h-25 lg:w-30 lg:h-30 object-contain " />
+        <img src={logo} alt="logo" className="w-10 h-10 sm:w-20 sm:h-20 md:w-25 md:h-25 lg:w-30 lg:h-30 object-contain " />
 
         <div className="flex items-center gap-2 mr-2 sm:mr-4">
           <div className="flex items-center gap-3 mr-2 sm:mr-4">
@@ -38,9 +39,9 @@ const CustomHeader = ({ link, icon: Icon, button = undefined, name, logo }: Prop
 
             {name && (
               <div className="flex items-center gap-2 px-3 py-2 rounded-lg ">
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-12 md:h-12" />
+                <Icon size={16} />
 
-                <span className={navTextStyle}>
+                <span className={cn("font-bold", navTextStyle)}>
                   {name}
                 </span>
               </div>
