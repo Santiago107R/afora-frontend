@@ -179,7 +179,7 @@ const Sidebar = ({ name }: Props) => {
             </nav>
 
             <div className={cn("flex bg-(--color-primary)/40 px-2 py-1 rounded-lg my-auto justify-center items-center")}>
-                <span className="text-(--color-black-fourth) text-center">
+                <span className="text-(--color-black-fourth) text-center whitespace-nowrap">
                     {isSidebarOpen ? name : name?.charAt(0)}
                 </span>
             </div>
