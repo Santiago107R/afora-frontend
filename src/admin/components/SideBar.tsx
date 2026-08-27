@@ -139,7 +139,7 @@ const Sidebar = () => {
                 </span>
 
                 <span className="text-[14px] font-bold whitespace-nowrap">
-                    cerrar sesión
+                    Cerrar Sesión
                 </span>
             </button>
 
