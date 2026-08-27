@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 
 interface Props {
   link?: LinkProp[]
-  icon: LucideIcon
+  icon?: LucideIcon
   logo: string
   button?: ButtonProps | undefined
   name?: string
@@ -39,7 +39,11 @@ const CustomHeader = ({ link, icon: Icon, button = undefined, name, logo }: Prop
 
             {name && (
               <div className="flex items-center gap-2 px-3 py-2 rounded-lg ">
-                <Icon size={16} />
+                {
+                  Icon && (
+                    <Icon size={16} />
+                  )
+                }
 
                 <span className={cn("font-bold", navTextStyle)}>
                   {name}

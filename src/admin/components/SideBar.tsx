@@ -14,15 +14,19 @@ import { useAuthStore } from "@/auth/store/auth.store"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 
-const Sidebar = () => {
+interface Props {
+    name?: string;
+}
+
+const Sidebar = ({ name }: Props) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true)
     const { logout } = useAuthStore()
 
     const openedSidebarStyle = "w-[250px]"
-    const closedSidebarStyle = "w-[66px]" // Ajustado para que el icono encaje perfecto sin desbordar
+    const closedSidebarStyle = "w-[66px]"
 
     const toggleIsSidebarOpen = (e: React.MouseEvent) => {
-        e.stopPropagation() // Evita que se dispare el evento del aside
+        e.stopPropagation()
         setIsSidebarOpen(prev => !prev)
     }
 
@@ -185,6 +189,10 @@ const Sidebar = () => {
             >
                 <span className="w-[26px] h-[26px] shrink-0 rounded-md flex items-center justify-center">
                     <LogOut size={16} className="text-black" />
+                </span>
+
+                <span className="text-center">
+                    {name}
                 </span>
 
                 <span className={cn("text-[14px] whitespace-nowrap text-black", !isSidebarOpen && "hidden")}>
