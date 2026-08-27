@@ -178,7 +178,7 @@ const Sidebar = ({ name }: Props) => {
                 </button>
             </nav>
 
-            <div className="bg-(--color-primary)/15 hover:bg-(--color-primary)/25 px-2 py-1 rounded-lg my-auto">
+            <div className={cn("bg-(--color-primary)/15 hover:bg-(--color-primary)/25 px-2 py-1 rounded-lg my-auto", !isSidebarOpen && "hidden")}>
                 <span className="text-(--color-black-fourth) text-center">
                     {name}
                 </span>
