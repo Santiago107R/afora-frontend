@@ -178,7 +178,7 @@ const Sidebar = ({ name }: Props) => {
                 </button>
             </nav>
 
-            <div className={cn("bg-(--color-primary)/50 px-2 py-1 rounded-lg my-auto justify-center items-center", !isSidebarOpen && "hidden")}>
+            <div className={cn("flex bg-(--color-primary)/50 px-2 py-1 rounded-lg my-auto justify-center items-center", !isSidebarOpen && "hidden")}>
                 <span className="text-(--color-black-fourth) text-center">
                     {name}
                 </span>
