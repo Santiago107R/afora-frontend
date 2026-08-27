@@ -15,10 +15,10 @@ const CardDashboard = ({ icon: Icon = Home, title, to }: Props) => {
     }
     return (
         <div
-            className="flex flex-col justify-center items-center w-25 bg-(--color-gray-secondary) border border-neutral-500 rounded-lg p-4 space-y-4"
+            className="flex flex-col justify-center items-center bg-(--color-gray-secondary) border border-neutral-500 rounded-lg p-4 space-y-4"
             onClick={() => handleClickNavigate(to)}
         >
-            <div className="bg-(--color-white-primary) rounded-full p-2">
+            <div className="bg-(--color-white-primary) rounded-full p-3">
                 <Icon className="size-15" />
             </div>
 
