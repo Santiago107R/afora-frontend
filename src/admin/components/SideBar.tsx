@@ -7,15 +7,42 @@ import {
     Presentation,
     UsersRound,
     CalendarPlus,
+    CircleArrowLeft,
 } from "lucide-react"
 import { NavLink } from "react-router"
 import { useAuthStore } from "@/auth/store/auth.store"
+import { useState } from "react"
+import { cn } from "@/lib/utils"
 
 const Sidebar = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
     const { logout } = useAuthStore()
 
+    const openedSidebarStyle = "w-[250px]"
+    const closedSidebarStyle = "w-[50px]"
+
+    const toggleIsSidebarOpen = () => {
+        setIsSidebarOpen(prev => !prev)
+    }
+
+    const openSidebar = (isSidebarOpen: boolean) => {
+        if (!isSidebarOpen) {
+            setIsSidebarOpen(true)
+        }
+    }
+
     return (
-        <aside className="w-[250px] h-full flex flex-col p-3 bg-(--color-gray-thirty)">
+        <aside
+            className={cn(
+                "h-full flex flex-col p-3 bg-(--color-gray-thirty)",
+                isSidebarOpen ? openedSidebarStyle : closedSidebarStyle
+            )}
+            onClick={() => openSidebar(isSidebarOpen)}
+        >
+
+            <button onClick={toggleIsSidebarOpen}>
+                <CircleArrowLeft size={16} />
+            </button>
 
             <nav className="flex flex-col gap-3">
 
