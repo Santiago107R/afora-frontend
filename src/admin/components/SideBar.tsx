@@ -19,13 +19,14 @@ const Sidebar = () => {
     const { logout } = useAuthStore()
 
     const openedSidebarStyle = "w-[250px]"
-    const closedSidebarStyle = "w-[50px]"
+    const closedSidebarStyle = "w-[66px]" // Ajustado para que el icono encaje perfecto sin desbordar
 
-    const toggleIsSidebarOpen = () => {
+    const toggleIsSidebarOpen = (e: React.MouseEvent) => {
+        e.stopPropagation() // Evita que se dispare el evento del aside
         setIsSidebarOpen(prev => !prev)
     }
 
-    const openSidebar = (isSidebarOpen: boolean) => {
+    const openSidebar = () => {
         if (!isSidebarOpen) {
             setIsSidebarOpen(true)
         }
@@ -34,18 +35,37 @@ const Sidebar = () => {
     return (
         <aside
             className={cn(
-                "h-full flex flex-col p-3 bg-(--color-gray-thirty) first:justify-end transition-all ease-in-out overflow-hidden",
+                "h-full flex flex-col p-3 bg-(--color-gray-thirty) transition-all duration-300 ease-in-out overflow-hidden",
                 isSidebarOpen ? openedSidebarStyle : closedSidebarStyle
             )}
-            onClick={() => openSidebar(isSidebarOpen)}
+            onClick={openSidebar}
+            style={{ cursor: !isSidebarOpen ? "pointer" : "default" }}
         >
+            <div
+                className={cn(
+                    "flex w-full mb-4 transition-all duration-300",
+                    isSidebarOpen ? "justify-end" : "justify-center"
+                )}
+            >
+                <button
+                    onClick={toggleIsSidebarOpen}
+                    className="p-1 hover:bg-[#d9d9d9] rounded-md transition-colors shrink-0"
+                >
+                    <CircleArrowLeft
+                        size={20}
+                        className={cn(
+                            "transition-transform duration-300",
+                            !isSidebarOpen && "rotate-180"
+                        )}
+                    />
+                </button>
+            </div>
 
-            <button onClick={toggleIsSidebarOpen}>
-                <CircleArrowLeft size={20} />
-            </button>
-
-            <nav className="flex flex-col gap-3">
-
+            <nav
+                className="flex flex-col gap-3"
+                onClick={(e) => e.stopPropagation()}
+                style={{ cursor: "default" }}
+            >
                 <NavLink
                     to="/admin"
                     end
@@ -152,25 +172,27 @@ const Sidebar = () => {
                         Excepciones
                     </span>
                 </button>
-
             </nav>
 
             <button
                 type="button"
-                onClick={logout}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    logout();
+                }}
+                style={{ cursor: "pointer" }}
                 className="mt-auto w-full h-[55px] flex items-center gap-4 px-2 rounded-lg bg-red-500/15 hover:bg-red-500/25"
             >
-                <span className="w-[26pxgit status
-                ] h-[26px] shrink-0 rounded-md flex items-center justify-center">
+                <span className="w-[26px] h-[26px] shrink-0 rounded-md flex items-center justify-center">
                     <LogOut size={16} className="text-black" />
                 </span>
 
-                <span className="text-[14px] font-bold whitespace-nowrap">
+                <span className="text-[14px] font-bold whitespace-nowrap text-black">
                     Cerrar Sesión
                 </span>
             </button>
-
         </aside>
     )
 }
+
 export default Sidebar
