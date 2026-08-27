@@ -80,7 +80,7 @@ const Sidebar = () => {
                         <Home size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Inicio
                     </span>
                 </NavLink>
@@ -98,7 +98,7 @@ const Sidebar = () => {
                         <UserRoundSearch size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Personal
                     </span>
                 </NavLink>
@@ -116,7 +116,7 @@ const Sidebar = () => {
                         <Presentation size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Aulas
                     </span>
                 </NavLink>
@@ -129,7 +129,7 @@ const Sidebar = () => {
                         <BookPlus size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Materias
                     </span>
                 </button>
@@ -142,7 +142,7 @@ const Sidebar = () => {
                         <UsersRound size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Cursos
                     </span>
                 </button>
@@ -155,7 +155,7 @@ const Sidebar = () => {
                         <BookOpen size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Clases
                     </span>
                 </button>
@@ -168,7 +168,7 @@ const Sidebar = () => {
                         <CalendarPlus size={16} className="text-white" />
                     </span>
 
-                    <span className="text-[14px] font-bold whitespace-nowrap">
+                    <span className={cn("text-[14px] whitespace-nowrap", !isSidebarOpen && "hidden")}>
                         Excepciones
                     </span>
                 </button>
@@ -187,7 +187,7 @@ const Sidebar = () => {
                     <LogOut size={16} className="text-black" />
                 </span>
 
-                <span className="text-[14px] font-bold whitespace-nowrap text-black">
+                <span className={cn("text-[14px] whitespace-nowrap text-black", !isSidebarOpen && "hidden")}>
                     Cerrar Sesión
                 </span>
             </button>
