@@ -15,7 +15,7 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 
 const Sidebar = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true)
     const { logout } = useAuthStore()
 
     const openedSidebarStyle = "w-[250px]"
