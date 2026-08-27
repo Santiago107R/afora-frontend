@@ -34,14 +34,14 @@ const Sidebar = () => {
     return (
         <aside
             className={cn(
-                "h-full flex flex-col p-3 bg-(--color-gray-thirty) transition-all ease-in-out",
+                "h-full flex flex-col p-3 bg-(--color-gray-thirty) first:justify-end transition-all ease-in-out overflow-hidden",
                 isSidebarOpen ? openedSidebarStyle : closedSidebarStyle
             )}
             onClick={() => openSidebar(isSidebarOpen)}
         >
 
             <button onClick={toggleIsSidebarOpen}>
-                <CircleArrowLeft size={16} />
+                <CircleArrowLeft size={20} />
             </button>
 
             <nav className="flex flex-col gap-3">
