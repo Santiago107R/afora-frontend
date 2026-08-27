@@ -1,15 +1,14 @@
-import { useAuthStore } from "@/auth/store/auth.store"
-import { Button } from "@/components/ui/button"
-import { useNavigate } from "react-router"
+import CardDashboard from "@/admin/components/CardDashboard"
+import { BookPlus, CalendarPlus, Presentation, UserRoundSearch, UsersRound } from "lucide-react"
 
 const HomeAdminPage = () => {
-    const { logout } = useAuthStore()
-    const navigate = useNavigate()
-
     return (
-        <div>
-            <Button variant={"destructive"} onClick={logout}>Salir</Button>
-            <Button variant={"default"} onClick={() => navigate('/admin/aulas')}>Aulas</Button>
+        <div className="grid grid-cols-3 justify-center items-center">
+            <CardDashboard icon={UserRoundSearch} title={"Usuarios"} to={"usuarios"} />
+            <CardDashboard icon={Presentation} title={"Aulas"} to={"aulas"} />
+            <CardDashboard icon={UsersRound} title={"Cursos"} to={"cursos"} />
+            <CardDashboard icon={BookPlus} title={"Materias"} to={"materias"} />
+            <CardDashboard icon={CalendarPlus} title={"Excepciones"} to={"excepciones"} />
         </div>
     )
 }

@@ -6,6 +6,7 @@ import {
     BookOpen,
     BriefcaseBusiness,
     LogOut,
+    Home,
 } from "lucide-react"
 import { NavLink } from "react-router"
 import { useAuthStore } from "@/auth/store/auth.store"
@@ -14,9 +15,27 @@ const Sidebar = () => {
     const { logout } = useAuthStore()
 
     return (
-        <aside className="w-[250px] h-full flex flex-col p-3">
+        <aside className="w-[250px] h-full flex flex-col p-3 bg-(--color-gray-thirty)">
 
             <nav className="flex flex-col gap-3">
+
+                <NavLink
+                    to="/admin"
+                    className={({ isActive }) =>
+                        `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
+                            ? "bg-[#d9d9d9]"
+                            : "hover:bg-[#d9d9d9]"
+                        }`
+                    }
+                >
+                    <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
+                        <Home size={16} className="text-white" />
+                    </span>
+
+                    <span className="text-[14px] font-bold whitespace-nowrap">
+                        Inicio
+                    </span>
+                </NavLink>
 
                 <NavLink
                     to="/admin/usuarios"
@@ -126,5 +145,4 @@ const Sidebar = () => {
         </aside>
     )
 }
-// console.log("ESTE COMPONENTE SE ESTA EJECUTANDO")
 export default Sidebar
