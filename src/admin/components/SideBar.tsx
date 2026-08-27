@@ -1,12 +1,12 @@
 import {
-    UserPlus,
-    Bell,
-    School,
-    GraduationCap,
     BookOpen,
-    BriefcaseBusiness,
     LogOut,
     Home,
+    BookPlus,
+    UserRoundSearch,
+    Presentation,
+    UsersRound,
+    CalendarPlus,
 } from "lucide-react"
 import { NavLink } from "react-router"
 import { useAuthStore } from "@/auth/store/auth.store"
@@ -21,6 +21,7 @@ const Sidebar = () => {
 
                 <NavLink
                     to="/admin"
+                    end
                     className={({ isActive }) =>
                         `w-full h-[55px] flex items-center gap-4 px-2 rounded-lg ${isActive
                             ? "bg-[#d9d9d9]"
@@ -47,7 +48,7 @@ const Sidebar = () => {
                     }
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
-                        <UserPlus size={16} className="text-white" />
+                        <UserRoundSearch size={16} className="text-white" />
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
@@ -65,7 +66,7 @@ const Sidebar = () => {
                     }
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
-                        <Bell size={16} className="text-white" />
+                        <Presentation size={16} className="text-white" />
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
@@ -78,7 +79,7 @@ const Sidebar = () => {
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
-                        <School size={16} className="text-white" />
+                        <BookPlus size={16} className="text-white" />
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
@@ -91,7 +92,7 @@ const Sidebar = () => {
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
-                        <GraduationCap size={16} className="text-white" />
+                        <UsersRound size={16} className="text-white" />
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
@@ -117,7 +118,7 @@ const Sidebar = () => {
                     className="w-full h-[55px] flex items-center gap-4 px-2 rounded-lg hover:bg-[#d9d9d9]"
                 >
                     <span className="w-[26px] h-[26px] shrink-0 bg-black rounded-md flex items-center justify-center">
-                        <BriefcaseBusiness size={16} className="text-white" />
+                        <CalendarPlus size={16} className="text-white" />
                     </span>
 
                     <span className="text-[14px] font-bold whitespace-nowrap">
