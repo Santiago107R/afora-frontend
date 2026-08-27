@@ -19,7 +19,7 @@ const CardDashboard = ({ icon: Icon = Home, title, to }: Props) => {
             onClick={() => handleClickNavigate(to)}
         >
             <div className="bg-(--color-white-primary) rounded-full p-2">
-                <Icon className="size-16" />
+                <Icon className="size-15" />
             </div>
 
             <h2 className="text-2xl">{title}</h2>
