@@ -178,6 +178,10 @@ const Sidebar = ({ name }: Props) => {
                 </button>
             </nav>
 
+            <span className="text-(--color-black-fourth) text-center bg-primary/15 hover:bg-primary/25">
+                {name}
+            </span>
+
             <button
                 type="button"
                 onClick={(e) => {
@@ -189,10 +193,6 @@ const Sidebar = ({ name }: Props) => {
             >
                 <span className="w-[26px] h-[26px] shrink-0 rounded-md flex items-center justify-center">
                     <LogOut size={16} className="text-black" />
-                </span>
-
-                <span className="text-center">
-                    {name}
                 </span>
 
                 <span className={cn("text-[14px] whitespace-nowrap text-black", !isSidebarOpen && "hidden")}>
