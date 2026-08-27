@@ -3,7 +3,7 @@ import { BookPlus, CalendarPlus, Presentation, UserRoundSearch, UsersRound } fro
 
 const HomeAdminPage = () => {
     return (
-        <div className="h-full min-h-0 p-10 grid grid-cols-1 grid-rows-[auto_minmax(0,1fr)]">
+        <div className="h-full min-h-0 p-10 grid grid-cols-1 grid-rows-[auto_minmax(0,1fr)] justify-center">
             <div className="grid grid-cols-6 gap-3 justify-center items-center">
 
                 <div className="col-span-2">
