@@ -34,7 +34,7 @@ const Sidebar = () => {
     return (
         <aside
             className={cn(
-                "h-full flex flex-col p-3 bg-(--color-gray-thirty)",
+                "h-full flex flex-col p-3 bg-(--color-gray-thirty) transition-all ease-in-out",
                 isSidebarOpen ? openedSidebarStyle : closedSidebarStyle
             )}
             onClick={() => openSidebar(isSidebarOpen)}
